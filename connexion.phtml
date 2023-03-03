@@ -1,0 +1,30 @@
+<div class="login-page">
+        <h1>Connexion</h1>
+        <div class="form">
+         
+          
+         
+        <form class="login-form" method="POST" action="index.php">
+
+            <label for="email">Email :</label>
+            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+            <?php if (isset($errors['email'])) : ?>
+               <p class="message error"><?= $errors['email']; ?></p>
+            <?php endif; ?>
+            
+            <label for="mot_de_passe">Mot de passe :</label>
+            <input type="password" id="mot_de_passe" name="mot_de_passe">
+            <?php if (isset($errors['mot_de_passe'])) : ?>
+               <p class="message error"><?= $errors['mot_de_passe']; ?></p>
+            <?php endif; ?>
+
+            <input type="submit" value="Connexion" class="btn">
+            <p class="message">Vous n'avez pas de compte? <a href="inscription.php">S'inscrire</a></p>
+        </form>
+
+        </div>
+      </div>
+
+   
+
+</header>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctowebline</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2c8b369b04.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="./icone.ico">
+
+  </head>
+  <body>
+    <header class="Intro">
+      
+      <nav class="navbar">
+        <div class="navbar-left">
+          <a href="index.php"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Mon Logo"></a>
+        </div>
+        <div class="navbar-right">
+          <ul class="mobile-menu">
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="#">Formation</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="navbar-icons">
+          <a href="inscription.php"><button>S'inscrire</button></a>
+          <a href="connexion.php"><i class="fa-solid fa-circle-user"></i></a>
+          <div class="burger">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </div>
+      
+      </nav>
+    
+      <main class="container-md">
+        <?php include $template . '.phtml'; ?>
+      </main>
+      
+      <footer>
+        <div class="containerfoot">
+          <div class="logofooter">
+            <img src="img/FOOTER.png" alt="Logo">
+          </div>
+          <div class="info-col">
+            <h4>Informations</h4>
+            <ul>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Mention légales</a></li>
+              <li><a href="#">Conditions générales d'utilisation</a></li>
+            </ul>
+          </div>
+          <div class="contact-col">
+            <h4>Nous contacter</h4>
+            <ul>
+              <li><i class="fas fa-phone"></i> 04.05.06.07.08</li>
+              <li><i class="fas fa-envelope"></i> Doctowebline@Mail.fr</li>
+              <li><i class="fas fa-map-marker-alt"></i> Marseille</li>
+            </ul>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+          </div>
+        </div>
+        <p class="footext">Copyright © 2023</p>
+      </footer>
+
+      <script type="text/javascript" src="js/config.js"></script>
+      <script src="js/app.js"></script>
+  </body>
+  </html>
+
+  
