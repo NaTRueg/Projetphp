@@ -5,35 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctowebline</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="http://localhost/Code/Projet/css/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/2c8b369b04.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./icone.ico">
-
+   
   </head>
   <body>
     <header class="Intro">
       
       <nav class="navbar">
         <div class="navbar-left">
-          <a href="index.php"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Mon Logo"></a>
+          <a href="home.php"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Mon Logo"></a>
         </div>
         <div class="navbar-right">
           <ul class="mobile-menu">
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="#">Formation</a></li>
+            <li><a href="Accueil">Accueil</a></li>
+            <li><a href="">Formation</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
         <div class="navbar-icons">
-          <a href="inscription.php"><button>S'inscrire</button></a>
-          <a href="connexion.php"><i class="fa-solid fa-circle-user"></i></a>
-          <div class="burger">
-            <i class="fa-solid fa-bars"></i>
-          </div>
+
+          <?php if (isset($_SESSION['user_id'])) { ?>
+              <a href="logout.php"><button>Déconnexion</button></a>
+          <?php } else { ?>
+              <a href="Inscription"><button>S'inscrire</button></a>
+          <?php } ?>
+          <?php if (isset($_SESSION['user_id'])) { ?>
+            <a href="account.php"><i class="fa-solid fa-circle-user"></i></a>
+          <?php } else { ?>
+            <a href="Connexion"><i class="fa-solid fa-circle-user"></i></a>
+          <?php } ?>
+         
+            <div class="burger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
       
       </nav>

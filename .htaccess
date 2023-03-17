@@ -1,0 +1,24 @@
+# Bloque l'accès direct aux fichiers phtml
+<Files "*.phtml">
+  Deny from all
+</Files>
+
+# Autorise l'accès aux fichiers phtml uniquement depuis les pages PHP
+<FilesMatch "\.php$">
+  <Files "*.phtml">
+    Allow from all
+  </Files>
+</FilesMatch>
+
+# Redirige vers la page d'erreur 404
+ErrorDocument 404 /erreur404.html
+
+RewriteEngine On
+RewriteRule ^Accueil$ index.php [L]
+RewriteRule ^Connexion$ connexion.php [L]
+RewriteRule ^Inscription$ inscription.php [L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

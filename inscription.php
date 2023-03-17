@@ -1,5 +1,8 @@
 <?php 
 
+// Démarrage de la session
+session_start();
+
 
 // Inclusion de la config
 require_once 'config.php';
@@ -8,15 +11,13 @@ require_once 'config.php';
 require 'fonction.php';
 
 
-// Démarrage de la session
-session_start();
+// Vérifier si l'utilisateur est connecté
+if (isset($_SESSION['user_id'])) {
+    // Utilisateur connecté - Afficher ou masquer des éléments de votre site
+    echo "Bonjour " . $_SESSION['user_name'] . "! Vous êtes connecté.";
 
-if (session_status() === PHP_SESSION_ACTIVE) {
-    // Vous êtes dans une session active
-    echo "Vous êtes dans une session active";
-} else {
-    // Vous n'êtes pas dans une session active
-    echo "Vous êtes pas dans une session active";
+    // Afficher un bouton de déconnexion
+    echo "<a href='connexion.php'>Déconnexion</a>";
 }
 
 
@@ -107,4 +108,4 @@ if (!empty($_POST)) {
 
 // Affichage : inclusion du template
 $template = 'inscription';
-include 'base.phtml';
+include 'templates/base.phtml';

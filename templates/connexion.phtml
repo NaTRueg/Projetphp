@@ -4,7 +4,7 @@
          
           
          
-        <form class="login-form" method="POST" action="index.php">
+        <form class="login-form" method="POST" action="connexion.php">
 
             <label for="email">Email :</label>
             <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
@@ -17,6 +17,11 @@
             <?php if (isset($errors['mot_de_passe'])) : ?>
                <p class="message error"><?= $errors['mot_de_passe']; ?></p>
             <?php endif; ?>
+
+            <?php if (isset($errors['login'])) : ?>
+               <p class="message error"><?= $errors['login']; ?></p>
+            <?php endif; ?>
+            
 
             <input type="submit" value="Connexion" class="btn">
             <p class="message">Vous n'avez pas de compte? <a href="inscription.php">S'inscrire</a></p>

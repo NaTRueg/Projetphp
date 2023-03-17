@@ -4,9 +4,6 @@
 require_once 'config.php';
 
 
-// Inclusion de la classe Database
-require_once 'Database.php';
-
 
 function getPDOConnection() {
 
@@ -26,7 +23,7 @@ function getPDOConnection() {
     return $pdo;
 }
 
-$pdo = getPdoConnection();
+// $pdo = getPdoConnection();
 
 function checkEmailExistence($pdo, $email)
 
@@ -104,3 +101,20 @@ function check_login(string $email, string $motDePasse): bool {
         return false;
     }
 }
+
+// function asset(string $path)
+// {
+//     return BASE_URL . '/' . $path;
+// }
+
+
+// // function constructUrl(string $path, array $params = [])
+// // {
+// //     $url = BASE_URL . '/index.php' . $path;
+
+// //     if ($params) {
+// //         $url .= '?' . http_build_query($params);
+// //     }
+
+// //     return $url;
+// // }

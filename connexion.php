@@ -1,13 +1,21 @@
 <?php
 
+// Démarrage de la session
+session_start();
+
+// Vérifie si l'utilisateur est déjà connecté, si oui, redirige-le vers la page de soumission
+if (isset($_SESSION['user_id'])) {
+    header("Location: Accueil");
+    exit();
+}
+
+
 // Inclusion de la config
 require_once 'config.php';
 
 // Inclusion des dépendances
 require 'fonction.php';
 
-// Démarrage de la session
-session_start();
 
 // Initialisation des variables
 $email = '';
@@ -35,21 +43,19 @@ if (!empty($_POST)) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['prenom'] . ' ' . $user['nom'];
 
-        if ($utilisateur_id) {
-            // Stockage de l'ID utilisateur dans la variable de session
-            $_SESSION['user_id'] = $utilisateur_id;
-        
-            // Redirection vers la page d'accueil
+        // Vérifier si l'utilisateur est connecté
+        if (isset($_SESSION['user_id'])) {
+            // Rediriger vers la page d'accueil
             header("Location: index.php");
             exit;
-        }
 
             } else {
                 // Le nom d'utilisateur ou le mot de passe est incorrect
                 $errors['login'] = "L'adresse email ou le mot de passe est incorrect.";
             }
         }
+    }
 
 // Affichage : inclusion du template
 $template = 'connexion';
-include 'base.phtml';
+include 'templates/base.phtml';
