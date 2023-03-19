@@ -25,7 +25,7 @@ session_destroy();
 $_SESSION['flash'] = 'Vous êtes maintenant déconnecté. À bientôt !';
 
 // Redirection vers la page de connexion
-header('Location: index.php');
+header('Location: Accueil');
 exit;
 
 // Affichage : inclusion du template

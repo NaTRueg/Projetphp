@@ -46,7 +46,7 @@ if (!empty($_POST)) {
         // Vérifier si l'utilisateur est connecté
         if (isset($_SESSION['user_id'])) {
             // Rediriger vers la page d'accueil
-            header("Location: index.php");
+            header("Location: Accueil");
             exit;
 
             } else {

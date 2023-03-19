@@ -2,7 +2,7 @@
         <h1>Inscription</h1>
         <div class="form">
           
-           <form class="login-form" method="POST" action="inscription.php">
+           <form class="login-form" method="POST" action="Inscription">
            <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>">
             <?php if (isset($errors['nom'])) : ?>
@@ -33,7 +33,7 @@
             <?php endif; ?>
 
               <input type="submit" value="S'inscrire" class="btn">
-                <p class="message">Vous avez déjà un compte? <a href="connexion.php">Se connecter</a></p>
+                <p class="message">Vous avez déjà un compte? <a href="connexion">Se connecter</a></p>
            </form>
         </div>
       </div>

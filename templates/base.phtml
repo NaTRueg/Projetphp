@@ -19,7 +19,7 @@
       
       <nav class="navbar">
         <div class="navbar-left">
-          <a href="home.php"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Mon Logo"></a>
+          <a href="Accueil"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Mon Logo"></a>
         </div>
         <div class="navbar-right">
           <ul class="mobile-menu">
@@ -32,14 +32,14 @@
         <div class="navbar-icons">
 
           <?php if (isset($_SESSION['user_id'])) { ?>
-              <a href="logout.php"><button>Déconnexion</button></a>
+              <a href="Déconnexion"><button>Déconnexion</button></a>
           <?php } else { ?>
               <a href="Inscription"><button>S'inscrire</button></a>
           <?php } ?>
           <?php if (isset($_SESSION['user_id'])) { ?>
-            <a href="account.php"><i class="fa-solid fa-circle-user"></i></a>
+            <a href="Moncompte"><i class="fa-solid fa-circle-user" alt="Mon compte"></i></a>
           <?php } else { ?>
-            <a href="Connexion"><i class="fa-solid fa-circle-user"></i></a>
+            <a href="Connexion"><i class="fa-solid fa-circle-user" alt="Se connecter"></i></a>
           <?php } ?>
          
             <div class="burger">

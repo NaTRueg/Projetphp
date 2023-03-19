@@ -10,14 +10,10 @@ require_once 'config.php';
 // Inclusion des dépendances
 require 'fonction.php';
 
-
-// Vérifier si l'utilisateur est connecté
+// Vérifie si l'utilisateur est déjà connecté
 if (isset($_SESSION['user_id'])) {
-    // Utilisateur connecté - Afficher ou masquer des éléments de votre site
-    echo "Bonjour " . $_SESSION['user_name'] . "! Vous êtes connecté.";
-
-    // Afficher un bouton de déconnexion
-    echo "<a href='connexion.php'>Déconnexion</a>";
+    header("Location: Accueil");
+    exit();
 }
 
 
@@ -73,8 +69,6 @@ if (!empty($_POST)) {
             $errors['date_naissance'] = "Merci d'indiquer une date de naissance";
         }
 
-
-        
     
         // Si tout est OK (pas d'erreur)
         if (empty($errors)) {
@@ -82,28 +76,17 @@ if (!empty($_POST)) {
             // Ajout de l'email dans le fichier csv
             $utilisateur_id = addUtilisateur($nom, $prenom, $date_naissance_mysql, $email, $motDePasse);
 
-            // Réinitialisation des champs du formulaire
-            unset($_POST['nom']);
-            unset($_POST['prenom']);
-            unset($_POST['date_naissance']);
-            unset($_POST['email']);
-            unset($_POST['mot_de_passe']);
+            // Initialisation de la session avec l'ID de l'utilisateur
+            $_SESSION['user_id'] = $pdo->lastInsertId();
         
-
-            // Vérification de la création du compte
-            if ($utilisateur_id) {
-                // Stockage de l'ID utilisateur dans la variable de session
-                $_SESSION['user_id'] = $utilisateur_id;
-                
-            
-            // Redirection vers la page d'accueil
-            header("Location: index.php");
-            exit;
-      
-
-        }
+        // Redirection vers la page de soumission
+        header("Location: Accueil");
+        exit();
     }
+
 }
+
+
 
 
 // Affichage : inclusion du template

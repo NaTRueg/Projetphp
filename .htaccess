@@ -17,6 +17,8 @@ RewriteEngine On
 RewriteRule ^Accueil$ index.php [L]
 RewriteRule ^Connexion$ connexion.php [L]
 RewriteRule ^Inscription$ inscription.php [L]
+RewriteRule ^Moncompte$ account.php [L]
+RewriteRule ^Déconnexion$ logout.php [L]
 
 
 RewriteCond %{REQUEST_FILENAME} !-d
