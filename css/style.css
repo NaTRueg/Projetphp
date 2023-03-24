@@ -21,7 +21,7 @@ header {
 
 .navbar {
 	display: flex;
-	/* justify-content: space-between; */
+	justify-content: space-between;
 	align-items: center;
 	background-color: #f2f2f200;
 	padding: 10px;
@@ -46,18 +46,19 @@ header {
   .navbar-right {
 	display: flex;
     align-items: center;
-	margin-left: 24%;
+	margin-left: 26%;
 
 	}
 
   
   .navbar-right a {
-	margin-right: 80px;
+	margin-right: 58px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 	text-decoration: none;
 	color: #333;
 	font-size: 18px;
+	transition-duration:1s;
 
   }
 
@@ -75,6 +76,7 @@ header {
 
 	color: rgb(0, 0, 0);
 	font-size: 2.5em;
+	transition-duration:1s;
 	
   }
 
@@ -205,7 +207,6 @@ header {
 }
 
 
-
 @media (max-width: 1220px) {
 
 		.navbar-right ul {
@@ -218,7 +219,7 @@ header {
 		background-color: #1424577d;
 		backdrop-filter: blur(7px);
 		height: 110vh;
-		width: 40%;
+		width: 55%;
 		top: -20px;
 		right: 0;
 		z-index: 995;
@@ -249,10 +250,6 @@ header {
 			margin: 25px;
 		}
 		
-		.navbar-icons {
-			margin-left: 42%;
-		}
-
 		.burger {
 			cursor: pointer;
 			display: flex;
@@ -267,40 +264,10 @@ header {
 	
 }
 
-@media (max-width: 1150px) {
-	.navbar-icons {
-		margin-left: 41%;
-	}
-}
 
-@media (max-width: 1125px) {
-	.navbar-icons {
-		margin-left: 39%;
-	}
-}
-
-@media (max-width: 1080px) {
-	.navbar-icons {
-		margin-left: 34%;
-	}
-}
-
-@media (max-width: 970px) {
-	.navbar-icons {
-		margin-left: 30%;
-	}
-}
-
-@media (max-width: 900px) {
-	.navbar-icons {
-		margin-left: 25%;
-	}
-}
 
 @media (max-width: 815px) {
-	.navbar-icons {
-		margin-left: 20%;
-	}
+	
 	.navbar-left img {
 		width: 200px;
 		margin-right: 0px;
@@ -308,24 +275,9 @@ header {
 	}
 }
 
-@media (max-width: 750px) {
-	.navbar-icons {
-		margin-left: 15%;
-	}
-}
-
-@media (max-width: 700px) {
-	.navbar-icons {
-		margin-left: 10%;
-	}
-}
 
 
 @media (max-width: 630px) {
-
-	.navbar-icons {
-		margin-left: 8%;
-	}
 
 
 	.navbar-left img {
@@ -336,7 +288,7 @@ header {
 
 	.navbar {
 	margin-left: 0px;
-    margin-right: 180px;
+    margin-right: 10px;
 
 	}
 
@@ -944,6 +896,32 @@ header {
 	margin-block-end: 15px;
 	box-sizing: border-box;
 	font-size: 14px;
+  }
+
+  #ville_id {
+	font-family: 'Montserrat', sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    margin-block-start: 5px;
+    margin-block-end: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  #specialite_id {
+	font-family: 'Montserrat', sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    margin-block-start: 5px;
+    margin-block-end: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
   }
 
   .form label {

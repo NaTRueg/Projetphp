@@ -1,0 +1,45 @@
+<div class="login-page">
+  <h1>Confirmation de rendez-vous</h1>
+  <div class="form">
+    <form class="login-form" method="POST" action="confirmation.php">
+      <label for="medecin_id">Médecin :</label>
+      <select id="medecin_id" name="medecin_id">
+        <option value="">Sélectionnez un médecin</option>
+        <?php foreach ($medecins as $medecin) : ?>
+          <option value="<?= $medecin['id'] ?>"><?= $medecin['nom'] ?></option>
+        <?php endforeach; ?>
+      </select>
+      <?php if (isset($errors['medecin_id'])) : ?>
+        <p class="message error"><?= $errors['medecin_id'] ?></p>
+      <?php endif; ?>
+
+      <input type="hidden" name="utilisateur_id" value="<?= $utilisateur_id ?>">
+      <input type="hidden" name="date" value="<?= $date ?>">
+      <input type="hidden" name="heure" value="<?= $heure ?>">
+      <p id="medecin-unavailable" style="display: none;">Le médecin sélectionné n'est pas disponible à cette heure.</p>
+
+      <input type="submit" name="submit" value="Confirmer le rendez-vous" class="btn">
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="login-page">
+  <h1>Choisissez votre docteur</h1>
+  <div class="form">
+    <form class="login-form" method="POST" action="confirmation.php">
+
+    <label for="medecin_id">Médecin :</label>
+      <select id="medecin_id" name="medecin_id">
+        <option value="">Sélectionnez un médecin</option>
+      </select>
+      <?php if (isset($errors['medecin_id'])) : ?>
+        <p class="message error"><?= $errors['medecin_id'] ?></p>
+      <?php endif; ?>
+
+      <input type="submit" name="submit" value="Prendre rendez-vous" class="btn">
+    </form>
+  </div>
+</div> -->

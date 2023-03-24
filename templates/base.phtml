@@ -24,10 +24,20 @@
         <div class="navbar-right">
           <ul class="mobile-menu">
             <li><a href="Accueil">Accueil</a></li>
-            <li><a href="">Formation</a></li>
-            <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
+               
+              <?php
+        
+                if (isset($_SESSION['user_id'])) {
+                  // Si l'utilisateur est connecté, on affiche le bouton de déconnexion
+                  echo '
+                    
+                  <li><a href="Rendez-vous">Rendez-vous</a></li>
+                  <li><a href="#">Services</a></li>';} 
+              ?>
+
           </ul>
+          
         </div>
         <div class="navbar-icons">
 

@@ -23,7 +23,7 @@ function geoFindMe() {
 
         // Construire la nouvelle URL de la carte Google Maps avec les coordonnées géographiques récupérées
         const mapUrl = `https://www.google.com/maps/embed/v1/search?q=doctor%20near%20me&center=${latitude},${longitude}&zoom=14&key=${api}`;
-// const mapUrl = `https://www.google.com/maps/embed/v1/search?q=doctor&center=${latitude},${longitude}&zoom=14&key=${api}`;
+        // const mapUrl = `https://www.google.com/maps/embed/v1/search?q=doctor&center=${latitude},${longitude}&zoom=14&key=${api}`;
         // Mettre à jour la source de l'iframe avec la nouvelle URL de la carte Google Maps
         mapIframe.src = mapUrl;
 
@@ -44,3 +44,49 @@ function geoFindMe() {
 }
 
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
+
+
+const medecinSelect = document.getElementById('medecin_id');
+  const medecinUnavailable = document.getElementById('medecin-unavailable');
+  const heureInput = document.getElementById('heure');
+
+  medecinSelect.addEventListener('change', () => {
+    const selectedMedecin = medecinSelect.value;
+    const selectedHeure = heureInput.value;
+    // Faire une requête AJAX pour vérifier si le médecin est disponible à cette heure-là
+    // Si le médecin n'est pas disponible, afficher le message d'erreur et masquer l'option du médecin
+    if (medecinNonDisponible) {
+      medecinUnavailable.style.display = 'block';
+      medecinSelect.querySelector(`[value="${selectedMedecin}"]`).style.display = 'none';
+    } else {
+      medecinUnavailable.style.display = 'none';
+      medecinSelect.querySelector(`[value="${selectedMedecin}"]`).style.display = 'block';
+    }
+  });
+
+  heureInput.addEventListener('change', () => {
+    const selectedMedecin = medecinSelect.value;
+    const selectedHeure = heureInput.value;
+    // Envoi d'une requête AJAX avec des données JSON
+$.ajax({
+    type: "POST",
+    url: "url_de_votre_script_php.php",
+    data: JSON.stringify({medecin_id: selectedMedecin, heure: selectedHeure}),
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function(response) {
+      // Traitement de la réponse
+    },
+    error: function(xhr, status, error) {
+      // Gestion des erreurs
+    }
+  });
+    // Si le médecin n'est pas disponible, afficher le message d'erreur et masquer l'option du médecin
+    if (medecinNonDisponible) {
+      medecinUnavailable.style.display = 'block';
+      medecinSelect.querySelector(`[value="${selectedMedecin}"]`).style.display = 'none';
+    } else {
+      medecinUnavailable.style.display = 'none';
+      medecinSelect.querySelector(`[value="${selectedMedecin}"]`).style.display = 'block';
+    }
+  });

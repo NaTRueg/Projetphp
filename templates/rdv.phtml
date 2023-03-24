@@ -1,0 +1,45 @@
+<div class="login-page">
+  <h1>Prendre rendez-vous</h1>
+  <div class="form">
+    <form class="login-form" method="POST" action="rdv.php">
+      <label for="specialite_id">Spécialité :</label>
+      <select id="specialite_id" name="specialite_id">
+        <option value="">Sélectionnez une spécialité</option>
+        <?php foreach ($specialites as $specialite) : ?>
+          <option value="<?= $specialite['id'] ?>"><?= $specialite['nom'] ?></option>
+        <?php endforeach; ?>
+      </select>
+      <?php if (isset($errors['specialite_id'])) : ?>
+        <p class="message error"><?= $errors['specialite_id'] ?></p>
+      <?php endif; ?>
+
+      <label for="ville_id">Ville :</label>
+      <select id="ville_id" name="ville_id">
+        <option value="">Sélectionnez une ville</option>
+        <?php foreach ($villes as $ville) : ?>
+          <option value="<?= $ville['id'] ?>"><?= $ville['nom'] ?></option>
+        <?php endforeach; ?>
+      </select>
+      <?php if (isset($errors['ville_id'])) : ?>
+        <p class="message error"><?= $errors['ville_id'] ?></p>
+      <?php endif; ?>
+
+      <label for="date">Date :</label>
+<input type="date" id="date" name="date" value="<?= isset($_POST['date']) ? htmlspecialchars($_POST['date']) : '' ?>" min="<?= date('Y-m-d') ?>" max="<?= date('Y-m-d', strtotime('+1 year')) ?>">
+<?php if (isset($errors['date'])) : ?>
+  <p class="message error"><?= $errors['date'] ?></p>
+<?php endif; ?>
+
+
+<label for="heure">Heure :</label>
+<input type="time" id="heure" name="heure" value="<?= isset($_POST['heure']) ? htmlspecialchars($_POST['heure']) : '' ?>" min="08:00" max="18:00" step="1800">
+<?php if (isset($errors['heure'])) : ?>
+  <p class="message error"><?= $errors['heure'] ?></p>
+<?php endif; ?>
+
+
+
+      <input type="submit" name="submit" value="Prendre rendez-vous" class="btn">
+    </form>
+  </div>
+</div>
