@@ -39,11 +39,12 @@ $ville_id = $_SESSION['ville_id'] ;
 
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-$medecin_id = $_POST['medecin_id'];
 
 
 
-
+if(isset($_POST['medecin_id'])) {
+    $medecin_id = $_POST['medecin_id'];
+  
 // Vérifier si le rendez-vous pour le patient donné à la date et l'heure spécifiées existe déjà
 $sql = "SELECT id FROM rendez_vous WHERE date = :date AND heure = :heure AND utilisateur_id = :utilisateur_id";
 $stmt = $pdo->prepare($sql);
@@ -74,7 +75,7 @@ if ($rendezVous) {
 // Récupérer l'id du rendez-vous qui vient d'être inséré
 $rendezVousId = $pdo->lastInsertId();
 
-
+}
 
 
 // // Redirection vers la page de confirmation
