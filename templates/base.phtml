@@ -24,7 +24,7 @@
         <div class="navbar-right">
           <ul class="mobile-menu">
             <li><a href="Accueil">Accueil</a></li>
-            <li><a href="#">Contact</a></li>
+
                
               <?php
         
@@ -32,9 +32,12 @@
                   // Si l'utilisateur est connecté, on affiche le bouton de déconnexion
                   echo '
                     
-                  <li><a href="Rendez-vous">Rendez-vous</a></li>
-                  <li><a href="#">Services</a></li>';} 
+                  <li><a href="Rendez-vous">Prendre rdv</a></li>
+                  <li><a href="MesRendez-vous">Mes rendez-vous</a></li>';} 
               ?>
+
+            <li><a href="#footer">Contact</a></li>
+
 
           </ul>
           
@@ -63,7 +66,7 @@
         <?php include $template . '.phtml'; ?>
       </main>
       
-      <footer>
+      <footer id="footer">
         <div class="containerfoot">
           <div class="logofooter">
             <img src="img/FOOTER.png" alt="Logo">

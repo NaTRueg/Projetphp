@@ -20,6 +20,7 @@ RewriteRule ^Inscription$ inscription.php [L]
 RewriteRule ^Confirmation$ confirmation.php [L]
 RewriteRule ^Moncompte$ account.php [L]
 RewriteRule ^Rendez-vous$ rdv.php [L]
+RewriteRule ^MesRendez-vous$ mesrdv.php [L]
 RewriteRule ^Confirmation$ confirmation.php [L]
 RewriteRule ^Déconnexion$ logout.php [L]
 

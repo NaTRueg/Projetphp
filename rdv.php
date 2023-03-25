@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
     $date = filter_input(INPUT_POST, 'date');
     $heure = filter_input(INPUT_POST, 'heure');
 
-    var_dump($_POST);
+   
 
     // Validation des données du formulaire
     if (!$specialite_id) {
@@ -59,36 +59,45 @@ if (isset($_POST['submit'])) {
         $errors['heure'] = "Veuillez saisir une heure valide.";
     }
 
-    // Récupération des médecins correspondant aux critères de spécialité et de ville
-    if (empty($errors)) {
-        $query = "SELECT * FROM medecins WHERE specialite_id = :specialite_id AND ville_id = :ville_id";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':specialite_id', $specialite_id, PDO::PARAM_INT);
-        $stmt->bindValue(':ville_id', $ville_id, PDO::PARAM_INT);
-        $stmt->execute();
-        $medecins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Récupération des médecins correspondant aux critères de spécialité, ville, date et heure
+if (empty($errors)) {
+    $sql = "SELECT *
+            FROM medecins
+            WHERE specialite_id = :specialite_id
+              AND ville_id = :ville_id
+              AND id NOT IN (
+                SELECT medecin_id
+                FROM rendez_vous
+                WHERE date = :date
+                  AND heure = :heure
+              )";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':specialite_id', $specialite_id, PDO::PARAM_INT);
+    $stmt->bindValue(':ville_id', $ville_id, PDO::PARAM_INT);
+    $stmt->bindValue(':date', $date);
+    $stmt->bindValue(':heure', $heure);
+    $stmt->execute();
+    $medecins = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Redirection vers le formulaire de sélection du médecin s'il y a des médecins correspondants
-        if (!empty($medecins)) {
-            $_SESSION['date'] = $date;
-            $_SESSION['heure'] = $heure;
-            $_SESSION['specialite_id'] = $specialite_id;
-            $_SESSION['ville_id'] = $ville_id;
-            $_SESSION['medecins'] = $medecins;
+    // Redirection vers le formulaire de sélection du médecin s'il y a des médecins correspondants
+    if (!empty($medecins)) {
+        $_SESSION['date'] = $date;
+        $_SESSION['heure'] = $heure;
+        $_SESSION['specialite_id'] = $specialite_id;
+        $_SESSION['ville_id'] = $ville_id;
+        $_SESSION['medecins'] = $medecins;
 
-            // Redirection vers la page de confirmation
-            header('Location: Confirmation');
-            exit;
-        } else {
-            $errors['medecin_id'] = "Aucun médecin correspondant n'a été trouvé.";
-        }
+        // Redirection vers la page de confirmation
+        header('Location: Confirmation');
+        exit;
+    } else {
+        $errors['medecin_id'] = "Aucun médecin correspondant n'a été trouvé.";
     }
 }
 
-if (!$stmt->execute()) {
-    var_dump($stmt->errorInfo());
-    exit;
 }
+
+
 
 // Affichage : inclusion du template
 $template = 'rdv';

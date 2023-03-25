@@ -26,7 +26,7 @@ header {
 	background-color: #f2f2f200;
 	padding: 10px;
 	margin-left: 20px;
-  	margin-right: 20px;
+  	
 	
   }
   
@@ -46,18 +46,18 @@ header {
   .navbar-right {
 	display: flex;
     align-items: center;
-	margin-left: 26%;
+    margin-left: 23%;
 
 	}
 
   
   .navbar-right a {
-	margin-right: 58px;
+	margin-right: 48px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 	text-decoration: none;
 	color: #333;
-	font-size: 18px;
+    font-size: 17px;
 	transition-duration:1s;
 
   }
@@ -67,7 +67,7 @@ header {
 	font-weight: 700;
 	text-decoration: none;
 	color: #F92D45;
-	font-size: 20px;
+	font-size: 19px;
 	text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 	transition-duration:1s;
   }
@@ -106,7 +106,7 @@ header {
 	color: #fff;
 	padding: 8px 16px;
 	border-radius: 50px;
-	font-size: 18px;
+    font-size: 16px;
 	cursor: pointer;
 	border: none;
 	-webkit-border-radius: 50px;
@@ -123,7 +123,7 @@ header {
 .navbar-icons button:hover {
 	background:  rgba(9, 97, 87, 0);
 	color: rgba(9,97,87,1);
-	font-size: 20px;
+	font-size: 18px;
 	transition:  0.5s ease-in-out;
 	font-weight: 600;
 
@@ -133,81 +133,9 @@ header {
 	display: none;
 }
 
-@media (max-width: 1480px) {
-	.navbar-right {
-		margin-left: 24%;
-		
-		}
-}
-
-@media (max-width: 1456px) {
-	.navbar-right {
-		margin-left: 22%;
-		}
-	.navbar-right a {
-		margin-right: 75px;
-		}		
-}
-
-@media (max-width: 1420px) {
-	.navbar-right {
-		margin-left: 21%;
-		}
-}
-
-@media (max-width: 1390px) {
-	.navbar-right {
-		margin-left: 20%;
-		}
-		.navbar-right a {
-		margin-right: 70px;
-		}	
-}
-
-@media (max-width: 1350px) {
-.navbar-right a {
-	margin-right: 67px;
-	font-size: 16px;
-	}	
-}
-
-@media (max-width: 1330px) {
-	.navbar-right {
-		margin-left: 18%;
-		}
-		.navbar-right a {
-		margin-right: 65px;
-		font-size: 16px;
-		}	
-		.navbar-right a:hover {
-		font-size: 18px;
-		 }
-}
-
-@media (max-width: 1240px) {
-	.navbar-right {
-		margin-left: 18%;
-		}
-		.navbar-right a {
-		margin-right: 65px;
-		font-size: 15px;
-		}	
-		.navbar-right a:hover {
-		font-size: 16px;
-		}
-}
-
-@media (max-width: 1230px) {
-
-		.navbar-right a {
-		margin-right: 63px;
-		
-		}	
-		
-}
 
 
-@media (max-width: 1220px) {
+@media (max-width: 1450px) {
 
 		.navbar-right ul {
 		
@@ -216,12 +144,13 @@ header {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		background-color: #1424577d;
+		background-color: #0f675eaa;
 		backdrop-filter: blur(7px);
 		height: 110vh;
 		width: 55%;
+		border-radius: 25px;
 		top: -20px;
-		right: 0;
+		right: -20px;
 		z-index: 995;
 		transform: translateX(0%);
 		transition: all 0.5s ease;
@@ -294,12 +223,12 @@ header {
 
 	.navbar-icons button {
 	
-	font-size: 15px;
+	font-size: 12px;
 	}
 
 	.navbar-icons button:hover {
 	
-	font-size: 18px;
+	font-size: 13px;
 		
 	}
 
