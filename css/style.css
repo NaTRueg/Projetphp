@@ -292,7 +292,7 @@ header {
   
   .buttons-container button {
 	font-family: 'Montserrat', sans-serif;
-	padding: 20px 70px;
+	padding: 20px 50px;
 	border-radius: 20px;
 	font-size: 18px;
 	margin-right: 10px;
@@ -311,6 +311,11 @@ header {
 	border: none;
   }
 
+  .premier a {
+	color: #E7E7E7;
+	text-decoration: none;
+  }
+
   .deux {
 	color: #151515;
 	background-color: #E7E7E7;
@@ -318,10 +323,17 @@ header {
 
   }
 
-  .deux:hover {
+  .deux a {
+	color: #151515;
+	text-decoration: none;
+	padding: 20px 15px;
+}
+  
+
+  .deux a:hover {
 	color: #E7E7E7;
   }
-
+  
 
   .buttons-container button:hover {
 	background-color: #142457;
@@ -734,6 +746,7 @@ header {
 }
   
   .text-container {
+	padding: 30px 10px;
 	flex-basis: 50%;
 	background: linear-gradient(0deg, #096157 0%, #51AEB0 94.27%);;
   }
@@ -1109,4 +1122,76 @@ header {
 .COMPTE {
 	margin-block-end: 200px;
 	margin-block-start: 200px;
+	text-align: center;
+
+}
+
+.COMPTE button {
+
+	background-color: #ba1212;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+	font-family: 'Montserrat';
+	font-size: 16px;
+	text-decoration: none;
+	
+}
+
+.COMPTE button:hover {
+	background-color: #890f0f;
+}
+
+.TitreRDV {
+	display: flex;
+	justify-content: center;
+  }
+
+.LesRDV {
+	/* display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 20px; */
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 600px;
+	justify-content: space-around;
+  }
+
+.Rdv {	
+	text-align: center;
+	background-color: #ffffffe3;
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 20px 0;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+}
+
+.supprimer-rdv {
+
+	background-color: #ba1212;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+	font-family: 'Montserrat';
+	font-size: 16px;
+	text-decoration: none;
+	
+}
+
+.supprimer-rdv:hover {
+	background-color: #890f0f;
 }

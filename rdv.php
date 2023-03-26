@@ -43,7 +43,6 @@ if (isset($_POST['submit'])) {
     $date = filter_input(INPUT_POST, 'date');
     $heure = filter_input(INPUT_POST, 'heure');
 
-   
 
     // Validation des données du formulaire
     if (!$specialite_id) {
@@ -61,16 +60,9 @@ if (isset($_POST['submit'])) {
 
 // Récupération des médecins correspondant aux critères de spécialité, ville, date et heure
 if (empty($errors)) {
-    $sql = "SELECT *
-            FROM medecins
-            WHERE specialite_id = :specialite_id
-              AND ville_id = :ville_id
-              AND id NOT IN (
-                SELECT medecin_id
-                FROM rendez_vous
-                WHERE date = :date
-                  AND heure = :heure
-              )";
+    $sql = "SELECT * FROM medecins WHERE specialite_id = :specialite_id AND ville_id = :ville_id
+            AND id NOT IN (SELECT medecin_id FROM rendez_vous WHERE date = :date
+            AND heure = :heure)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':specialite_id', $specialite_id, PDO::PARAM_INT);
     $stmt->bindValue(':ville_id', $ville_id, PDO::PARAM_INT);

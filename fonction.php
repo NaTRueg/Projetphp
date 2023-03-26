@@ -102,4 +102,82 @@ function check_login(string $email, string $motDePasse): bool {
     }
 }
 
+function getUserEmail($pdo, $userId) {
+    $stmt = $pdo->prepare("SELECT email FROM utilisateur WHERE id = ?");
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+    return $user['email'];
+}
 
+function getUserName($pdo, $userId) {
+    $stmt = $pdo->prepare("SELECT nom FROM utilisateur WHERE id = ?");
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+    return $user['nom'];
+}
+
+function getUserFirstname($pdo, $userId) {
+    $stmt = $pdo->prepare("SELECT prenom FROM utilisateur WHERE id = ?");
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+    return $user['prenom'];
+}
+function getUserAge($pdo, $userId) {
+    $query = "SELECT date_naissance FROM utilisateur WHERE id = ?";
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(1, $userId, PDO::PARAM_INT);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $dob = $result['date_naissance'];
+    
+    // Calculer l'âge à partir de la date de naissance
+    $today = new DateTime();
+    $birthdate = new DateTime($dob);
+    $age = $today->diff($birthdate)->y;
+    
+    return $age;
+}
+
+function deleteUserAndAppointments($pdo, $user_id) {
+    // Démarrer une transaction
+    $pdo->beginTransaction();
+
+    try {
+        // Supprimer tous les rendez-vous de l'utilisateur
+        $query = "DELETE FROM rendez_vous WHERE utilisateur_id = ?";
+        $statement = $pdo->prepare($query);
+        $statement->execute([$user_id]);
+
+        // Supprimer l'utilisateur de la base de données
+        $query = "DELETE FROM utilisateur WHERE id = ?";
+        $statement = $pdo->prepare($query);
+        $statement->execute([$user_id]);
+
+        // Valider la transaction
+        $pdo->commit();
+
+        return true;
+    } catch (Exception $e) {
+        // En cas d'erreur, annuler la transaction
+        $pdo->rollback();
+
+        return false;
+    }
+}
+
+function getRendezVousUtilisateur($pdo, $utilisateur_id) {
+    $sql = "SELECT rendez_vous.id, rendez_vous.heure, rendez_vous.date, medecins.nom AS nom_medecin
+            FROM rendez_vous
+            JOIN medecins ON rendez_vous.medecin_id = medecins.id
+            WHERE rendez_vous.utilisateur_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$utilisateur_id]);
+    $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $resultats;
+}
+
+function deleteRdv($pdo, $id) {
+    $stmt = $pdo->prepare('DELETE FROM rendez_vous WHERE id = ?');
+    $stmt->execute([$id]);
+    return $stmt->rowCount() > 0;
+}

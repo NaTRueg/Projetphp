@@ -1,0 +1,27 @@
+
+<div class ="TitreRDV">
+    
+    <h1>Mes rendez-vous</h1>
+
+</div>
+
+<section class ="LesRDV">
+
+   
+        <?php foreach ($rdvs as $rdv) { ?>
+            <div class="Rdv">
+            <p>
+                Rendez-vous avec le médecin <?= $rdv['nom_medecin'] ?> <br>
+                Le <?= date('d/m/Y', strtotime($rdv['date'])) ?> à <?= date('H:i', strtotime($rdv['heure'])) ?>
+
+                <form method="post" action="rdvsupp.php">
+                    <input type="hidden" name="rdv_id" value="<?php echo $rdv['id']; ?>">
+                    <button class="supprimer-rdv" type="submit">&times; Supprimer mon rendez-vous</button>
+                    
+                </form>
+            </p>
+            </div>
+        <?php } ?>
+    
+
+</section>

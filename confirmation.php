@@ -3,9 +3,9 @@
 session_start();
 
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 
 
 // Redirige vers la page d'accueil si la session n'est pas active
@@ -79,7 +79,7 @@ $rendezVousId = $pdo->lastInsertId();
 
 
 // // Redirection vers la page de confirmation
-// header('Location: bravo.php');
+// header('Location: MesRendez-vous');
 // exit;
 
 

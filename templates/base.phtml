@@ -34,9 +34,16 @@
                     
                   <li><a href="Rendez-vous">Prendre rdv</a></li>
                   <li><a href="MesRendez-vous">Mes rendez-vous</a></li>';} 
+
+                  else {
+                    echo '
+                    
+                  <li><a href="#AboutUs">À propos de nous</a></li>
+                  <li><a href="#LocaliserDesDocteurs">Localiser</a></li>';}
+
               ?>
 
-            <li><a href="#footer">Contact</a></li>
+            <li><a href="#Contact">Contact</a></li>
 
 
           </ul>
@@ -66,7 +73,7 @@
         <?php include $template . '.phtml'; ?>
       </main>
       
-      <footer id="footer">
+      <footer id="Contact">
         <div class="containerfoot">
           <div class="logofooter">
             <img src="img/FOOTER.png" alt="Logo">

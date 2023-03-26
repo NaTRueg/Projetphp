@@ -21,6 +21,9 @@ $pdo = getPdoConnection();
 
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
+// Récupération des rendez-vous de l'utilisateur
+$rdvs = getRendezVousUtilisateur($pdo, $utilisateur_id);
+
 
 
 
