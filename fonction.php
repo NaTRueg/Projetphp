@@ -122,6 +122,7 @@ function getUserFirstname($pdo, $userId) {
     $user = $stmt->fetch();
     return $user['prenom'];
 }
+
 function getUserAge($pdo, $userId) {
     $query = "SELECT date_naissance FROM utilisateur WHERE id = ?";
     $statement = $pdo->prepare($query);

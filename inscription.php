@@ -29,13 +29,27 @@ $pdo = getPdoConnection();
 // Vérifiez si le formulaire a été soumis
 if (!empty($_POST)) {
 
-    // Récupérez les valeurs des champs du formulaire
-    $nom = htmlspecialchars($_POST['nom']);
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $dateNaissance = htmlspecialchars($_POST['date_naissance']);
-    $date_naissance_mysql = date('Y-m-d', strtotime($dateNaissance));
-    $email = htmlspecialchars($_POST['email']);
-    $motDePasse = htmlspecialchars($_POST['mot_de_passe']);
+        // Récupérez les valeurs des champs du formulaire et supprimez les espaces inutiles
+        $nom = trim(htmlspecialchars($_POST['nom']));
+        $prenom = trim(htmlspecialchars($_POST['prenom']));
+        $dateNaissance = trim(htmlspecialchars($_POST['date_naissance']));
+        $date_naissance_mysql = date('Y-m-d', strtotime($dateNaissance));
+        $email = trim(htmlspecialchars($_POST['email']));
+        $motDePasse = trim(htmlspecialchars($_POST['mot_de_passe']));
+
+        
+        // Vérifiez si les champs nom et prénom contiennent uniquement des lettres et des espaces
+        if (!preg_match("/^[a-zA-Z\s]*$/", $nom)) {
+            $errors['nom'] = "Le nom ne peut contenir que des lettres.";
+        }
+        if (!preg_match("/^[a-zA-Z\s]*$/", $prenom)) {
+            $errors['prenom'] = "Le prénom ne peut contenir que des lettres.";
+        }
+
+        // Mettez la première lettre en majuscule et le reste en minuscule
+        $nom = ucwords(strtolower($nom));
+        $prenom = ucwords(strtolower($prenom));
+
 
     // Vérifiez si un abonné existe déjà avec la même adresse email
      if (checkEmailExistence($pdo , $email)) {

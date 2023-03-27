@@ -2,30 +2,37 @@
 
     <h1>Liste des utilisateurs</h1>
 
-    <div class ="Utilisateurs">
 
-        <?php
-        // Affichage des utilisateurs
-        
-        echo '<table>';
-        echo '<tr>';
-        echo '<th>Nom</th>';
-        echo '<th>Prénom</th>';
-        echo '<th>Email</th>';
-        echo '<th>Age</th>';
-        echo '<th>Actions</th>';
-        echo '</tr>';
-        foreach ($users as $user) {
-            echo '<tr>';
-            echo '<td>' . getUserName($pdo, $user['id']) . '</td>';
-            echo '<td>' . getUserFirstname($pdo, $user['id']) . '</td>';
-            echo '<td>' . $user['email'] . '</td>';
-            echo '<td>' . getUserAge($pdo, $user['id']) . '</td>';
-            echo '<td><a href="deleteUser.php?user_id=' . $user['id'] . '">Supprimer</a></td>';
-            echo '</tr>';
-        }
-        echo '</table>';
-        ?>
+    <div class="Docteurs">
+        <?php if (empty($users)): ?>
+            <p>Aucun utilisateurs n'a été trouvé.</p>
+        <?php else: ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Âge</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?= $user['id'] ?></td>
+                            <td><?= $user['nom'] ?></td>
+                            <td><?= $user['prenom'] ?></td>
+                            <td><?= $user['email'] ?></td>
+                            <td><?= getUserAge($pdo, $user['id']) ?></td>
+                            <td><a href="deleteUser.php?user_id=<?= $user['id'] ?>">Supprimer</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+
 
     </div>
 

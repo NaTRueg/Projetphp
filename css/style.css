@@ -1264,6 +1264,8 @@ header {
  	background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
     height: 400px;
     background-position: center;
+	background-size: cover;
+	border-radius: 50%;
  }
  
  
@@ -1312,3 +1314,33 @@ header {
 	margin-bottom: 100px;
 }
 
+.ajt {
+	font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #142457;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.Docteurs {
+	border: 2px black solid;
+}
+
+.Docteurs table {
+	border: 2px black solid;
+}
+
+.Docteurs thead tr th {
+	border: 2px black solid;
+}
+
+.Docteurs tbody tr td  {
+	border: 2px black solid !important;
+}
