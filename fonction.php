@@ -165,6 +165,34 @@ function deleteUserAndAppointments($pdo, $user_id) {
     }
 }
 
+function deleteDoctorAndAppointments($pdo, $doctor_id) {
+    // Démarrer une transaction
+    $pdo->beginTransaction();
+
+    try {
+        // Supprimer tous les rendez-vous du médecin
+        $query = "DELETE FROM rendez_vous WHERE medecin_id = ?";
+        $statement = $pdo->prepare($query);
+        $statement->execute([$doctor_id]);
+
+        // Supprimer le médecin de la base de données
+        $query = "DELETE FROM medecins WHERE id = ?";
+        $statement = $pdo->prepare($query);
+        $statement->execute([$doctor_id]);
+
+        // Valider la transaction
+        $pdo->commit();
+
+        return true;
+    } catch (Exception $e) {
+        // En cas d'erreur, annuler la transaction
+        $pdo->rollback();
+
+        return false;
+    }
+}
+
+
 function getRendezVousUtilisateur($pdo, $utilisateur_id) {
     $sql = "SELECT rendez_vous.id, rendez_vous.heure, rendez_vous.date, medecins.nom AS nom_medecin
             FROM rendez_vous
@@ -181,3 +209,29 @@ function deleteRdv($pdo, $id) {
     $stmt->execute([$id]);
     return $stmt->rowCount() > 0;
 }
+
+
+function getMedecins($pdo) {
+    $sql = "SELECT medecins.id, medecins.nom, medecins.email, specialites.nom AS specialite, villes.nom AS ville 
+            FROM medecins 
+            INNER JOIN specialites ON medecins.specialite_id = specialites.id 
+            INNER JOIN villes ON medecins.ville_id = villes.id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $medecins = array();
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $medecin = array();
+        $medecin['id'] = $row['id'];
+        $medecin['nom'] = $row['nom'];
+        $medecin['email'] = $row['email'];
+        $medecin['specialite'] = $row['specialite'];
+        $medecin['ville'] = $row['ville'];
+        array_push($medecins, $medecin);
+    }
+    return $medecins;
+}
+
+
+

@@ -37,7 +37,7 @@ if (!empty($_POST)) {
 
         // Récupération de l'utilisateur depuis la base de données
         $pdo = getPdoConnection();
-        $sql = "SELECT id, prenom, nom FROM utilisateur WHERE email = ?";
+        $sql = "SELECT id, prenom, nom, isAdmin  FROM utilisateur WHERE email = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
         $user = $stmt->fetch();
@@ -45,6 +45,7 @@ if (!empty($_POST)) {
         // Stockage de l'ID utilisateur dans la variable de session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['prenom'] . ' ' . $user['nom'];
+        $_SESSION['isAdmin'] = $user['isAdmin'];
 
         // Vérifier si l'utilisateur est connecté
         if (isset($_SESSION['user_id'])) {

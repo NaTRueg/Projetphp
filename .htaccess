@@ -11,7 +11,7 @@
 </FilesMatch>
 
 # Redirige vers la page d'erreur 404
-ErrorDocument 404 /erreur404.html
+ErrorDocument 404 /error.php
 
 RewriteEngine On
 RewriteCond %{HTTPS} off
@@ -27,6 +27,10 @@ RewriteRule ^Confirmation$ confirmation.php [L]
 RewriteRule ^Déconnexion$ logout.php [L]
 RewriteRule ^MentionsLégales$ mention.php [L]
 RewriteRule ^ConditionsGénérales$ cgu.php [L]
+RewriteRule ^Administrateur$ admin.php [L]
+RewriteRule ^Utilisateurs$ user.php [L]
+RewriteRule ^GérerDocteurs$ docteur.php [L]
+RewriteRule ^Error$ error.php [L]
 
 
 RewriteCond %{REQUEST_FILENAME} !-d

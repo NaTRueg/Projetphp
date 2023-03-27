@@ -1,0 +1,32 @@
+<section class = "Gereruser">
+
+    <h1>Liste des utilisateurs</h1>
+
+    <div class ="Utilisateurs">
+
+        <?php
+        // Affichage des utilisateurs
+        
+        echo '<table>';
+        echo '<tr>';
+        echo '<th>Nom</th>';
+        echo '<th>Prénom</th>';
+        echo '<th>Email</th>';
+        echo '<th>Age</th>';
+        echo '<th>Actions</th>';
+        echo '</tr>';
+        foreach ($users as $user) {
+            echo '<tr>';
+            echo '<td>' . getUserName($pdo, $user['id']) . '</td>';
+            echo '<td>' . getUserFirstname($pdo, $user['id']) . '</td>';
+            echo '<td>' . $user['email'] . '</td>';
+            echo '<td>' . getUserAge($pdo, $user['id']) . '</td>';
+            echo '<td><a href="deleteUser.php?user_id=' . $user['id'] . '">Supprimer</a></td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        ?>
+
+    </div>
+
+</section>

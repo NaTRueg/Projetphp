@@ -19,57 +19,66 @@
   <body>
     <header class="Intro">
       
-      <nav class="navbar">
-        <div class="navbar-left">
-          <a href="Accueil"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Doctowebline Logo"></a>
-        </div>
-        <div class="navbar-right">
-          <ul class="mobile-menu">
-            <li><a href="Accueil">Accueil</a></li>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="Accueil"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Doctowebline Logo"></a>
+      </div>
+      <div class="navbar-right">
+        <ul class="mobile-menu">
+          <li><a href="Accueil">Accueil</a></li>
 
-               
-              <?php
-        
-                if (isset($_SESSION['user_id'])) {
-                  // Si l'utilisateur est connecté, on affiche le bouton de déconnexion
-                  echo '
-                    
+          <?php
+            if (isset($_SESSION['user_id'])) {
+              // Si l'utilisateur est connecté
+
+              if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+                // Si l'utilisateur est un admin, on affiche les boutons "Gérer docteurs" et "Utilisateur"
+                echo '
+                  <li><a href="GérerDocteurs">Gérer docteurs</a></li>
+                  <li><a href="Utilisateurs">Utilisateurs</a></li>
+                ';
+              } else {
+                // Sinon, on affiche les boutons "Prendre rdv" et "Mes rendez-vous"
+                echo '
                   <li><a href="Rendez-vous">Prendre rdv</a></li>
-                  <li><a href="MesRendez-vous">Mes rendez-vous</a></li>';} 
+                  <li><a href="MesRendez-vous">Mes rendez-vous</a></li>
+                ';
+              }
 
-                  else {
-                    echo '
-                    
-                  <li><a href="#AboutUs">À propos de nous</a></li>
-                  <li><a href="#LocaliserDesDocteurs">Localiser</a></li>';}
+            } else {
+              // Si l'utilisateur n'est pas connecté, on affiche les boutons "À propos de nous" et "Localiser"
+              echo '
+                <li><a href="#AboutUs">À propos de nous</a></li>
+                <li><a href="#LocaliserDesDocteurs">Localiser</a></li>
+              ';
+            }
+          ?>
 
-              ?>
 
-            <li><a href="#Contact">Contact</a></li>
-
-
-          </ul>
+          <li><a href="#Contact">Contact</a></li>
           
-        </div>
-        <div class="navbar-icons">
+        </ul>
+        
+      </div>
+      <div class="navbar-icons">
 
-          <?php if (isset($_SESSION['user_id'])) { ?>
-              <a href="Déconnexion"><button>Déconnexion</button></a>
-          <?php } else { ?>
-              <a href="Inscription"><button>S'inscrire</button></a>
-          <?php } ?>
-          <?php if (isset($_SESSION['user_id'])) { ?>
-            <a href="Moncompte"><i class="fa-solid fa-circle-user" alt="Mon compte"></i></a>
-          <?php } else { ?>
-            <a href="Connexion"><i class="fa-solid fa-circle-user" alt="Se connecter"></i></a>
-          <?php } ?>
-         
-            <div class="burger">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
-      
-      </nav>
+        <?php if (isset($_SESSION['user_id'])) { ?>
+            <a href="Déconnexion"><button>Déconnexion</button></a>
+        <?php } else { ?>
+            <a href="Inscription"><button>S'inscrire</button></a>
+        <?php } ?>
+        <?php if (isset($_SESSION['user_id'])) { ?>
+          <a href="Moncompte"><i class="fa-solid fa-circle-user" alt="Mon compte"></i></a>
+        <?php } else { ?>
+          <a href="Connexion"><i class="fa-solid fa-circle-user" alt="Se connecter"></i></a>
+        <?php } ?>
+        
+          <div class="burger">
+              <i class="fa-solid fa-bars"></i>
+          </div>
+      </div>
+    
+    </nav>
     
       <main class="container-md">
         <?php include $template . '.phtml'; ?>
