@@ -75,12 +75,13 @@ if ($rendezVous) {
 // Récupérer l'id du rendez-vous qui vient d'être inséré
 $rendezVousId = $pdo->lastInsertId();
 
+// Redirection vers la page de confirmation
+header('Location: MesRendez-vous');
+exit;
+
 }
 
 
-// // Redirection vers la page de confirmation
-// header('Location: MesRendez-vous');
-// exit;
 
 
 

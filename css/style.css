@@ -25,7 +25,6 @@ header {
 	align-items: center;
 	background-color: #f2f2f200;
 	padding: 10px;
-	margin-left: 20px;
   	
 	
   }
@@ -210,7 +209,7 @@ header {
 
 
 	.navbar-left img {
-		width: 150px;
+		width: 115px;
 		margin-right: 0px;
 		margin-block-start: 0px;
 	}
@@ -810,6 +809,7 @@ header {
 	width: 360px;
 	padding: 6% 0% 8%;
 	margin: auto;
+	margin-top: 50px;
   }
 
   .login-page h1 {
@@ -839,6 +839,20 @@ header {
 	box-sizing: border-box;
 	font-size: 14px;
   }
+
+  #heure {
+	font-family: 'Montserrat', sans-serif;
+	outline: 0;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+    margin-block-start: 5px;
+	margin-block-end: 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+  }
+  
 
   #ville_id {
 	font-family: 'Montserrat', sans-serif;
@@ -1002,6 +1016,7 @@ header {
 
 }
 
+
   
 
   footer {
@@ -1152,15 +1167,23 @@ header {
   }
 
 .LesRDV {
-	/* display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 20px; */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
 	padding: 20px;
-	display: flex;
+	margin-bottom: 200px;
+	/* display: flex;
 	flex-direction: row;
-	margin-bottom: 600px;
-	justify-content: space-around;
+	justify-content: space-around;  */
   }
+
+  @media (max-width: 870px) {
+    .LesRDV {
+		display: flex;
+		flex-direction: column;
+    }
+
+}
 
 .Rdv {	
 	text-align: center;
@@ -1194,4 +1217,28 @@ header {
 
 .supprimer-rdv:hover {
 	background-color: #890f0f;
+}
+
+.mention {
+	padding: 10px 20px;
+	background-color: #e7e7e7a0;
+	border-radius: 20px;
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 300px;
+	margin-top: 100px;
+}
+
+.mention h1 {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.mention h2 {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.mention p {
+	text-align: center;
+	margin-top: 50px;
 }

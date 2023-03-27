@@ -26,8 +26,11 @@ $errors = [];
 if (!empty($_POST)) {
 
     // Récupérez les valeurs des champs du formulaire
-    $email = $_POST['email'];
-    $motDePasse = $_POST['mot_de_passe'];
+    $email = htmlspecialchars(trim($_POST['email']));
+    $motDePasse = htmlspecialchars($_POST['mot_de_passe']);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "L'adresse email n'est pas valide.";
+    }
 
     // Vérifiez si l'utilisateur existe et que le mot de passe est correct
     if (check_login($email, $motDePasse)) {

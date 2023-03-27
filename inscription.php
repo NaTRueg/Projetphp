@@ -30,12 +30,12 @@ $pdo = getPdoConnection();
 if (!empty($_POST)) {
 
     // Récupérez les valeurs des champs du formulaire
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $dateNaissance = $_POST['date_naissance'];
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $dateNaissance = htmlspecialchars($_POST['date_naissance']);
     $date_naissance_mysql = date('Y-m-d', strtotime($dateNaissance));
-    $email = $_POST['email'];
-    $motDePasse = $_POST['mot_de_passe'];
+    $email = htmlspecialchars($_POST['email']);
+    $motDePasse = htmlspecialchars($_POST['mot_de_passe']);
 
     // Vérifiez si un abonné existe déjà avec la même adresse email
      if (checkEmailExistence($pdo , $email)) {
@@ -65,8 +65,21 @@ if (!empty($_POST)) {
             $errors['mot_de_passe'] = "Merci d'indiquer un mot de passe";
         }
 
+        if (strlen($motDePasse) < 8) {
+            $errors['mot_de_passe'] = "Le mot de passe doit avoir au moins 8 caractères.";
+        }
+
         if (!$dateNaissance) {
             $errors['date_naissance'] = "Merci d'indiquer une date de naissance";
+        }
+
+        if (isset($_POST['date_naissance'])) {
+            $date_naissance = new DateTime($_POST['date_naissance']);
+            $now = new DateTime();
+            $age = $now->diff($date_naissance)->y;
+            if ($age < 18) {
+                $errors['date_naissance'] = 'Vous devez avoir au moins 18 ans pour vous inscrire';
+            }
         }
 
     

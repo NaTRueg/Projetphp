@@ -14,6 +14,8 @@
 ErrorDocument 404 /erreur404.html
 
 RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule ^Accueil$ index.php [L]
 RewriteRule ^Connexion$ connexion.php [L]
 RewriteRule ^Inscription$ inscription.php [L]
@@ -23,6 +25,8 @@ RewriteRule ^Rendez-vous$ rdv.php [L]
 RewriteRule ^MesRendez-vous$ mesrdv.php [L]
 RewriteRule ^Confirmation$ confirmation.php [L]
 RewriteRule ^Déconnexion$ logout.php [L]
+RewriteRule ^MentionsLégales$ mention.php [L]
+RewriteRule ^ConditionsGénérales$ cgu.php [L]
 
 
 RewriteCond %{REQUEST_FILENAME} !-d

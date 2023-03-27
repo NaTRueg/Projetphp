@@ -32,9 +32,20 @@
 
 
         <label for="heure">Heure :</label>
-        <input type="time" id="heure" name="heure" value="<?= isset($_POST['heure']) ? htmlspecialchars($_POST['heure']) : '' ?>" min="08:00" max="18:00" step="1800">
+        <select id="heure" name="heure">
+            <option value="">Choisir une heure</option>
+            <?php
+            for ($h = 8; $h <= 18; $h++) {
+                for ($m = 0; $m < 60; $m += 30) {
+                    $time = sprintf('%02d:%02d', $h, $m);
+                    $selected = isset($_POST['heure']) && $_POST['heure'] === $time ? 'selected' : '';
+                    echo "<option value=\"$time\" $selected>$time</option>";
+                }
+            }
+            ?>
+        </select>
         <?php if (isset($errors['heure'])) : ?>
-          <p class="message error"><?= $errors['heure'] ?></p>
+            <p class="message error"><?= $errors['heure'] ?></p>
         <?php endif; ?>
 
 
