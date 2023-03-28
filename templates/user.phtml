@@ -15,6 +15,7 @@
                         <th>Prénom</th>
                         <th>Email</th>
                         <th>Âge</th>
+                        <th>Rôle</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                             <td><?= $user['prenom'] ?></td>
                             <td><?= $user['email'] ?></td>
                             <td><?= getUserAge($pdo, $user['id']) ?></td>
+                            <td><?= $user['role'] ?></td>
                             <td><a href="deleteUser.php?user_id=<?= $user['id'] ?>">Supprimer</a></td>
                         </tr>
                     <?php endforeach; ?>
