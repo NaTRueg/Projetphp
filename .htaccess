@@ -33,6 +33,12 @@ RewriteRule ^GérerDocteurs$ docteur.php [L]
 RewriteRule ^Error$ error.php [L]
 
 
+# # Interdit l'accès direct aux fichiers PHP
+# RewriteCond %{ENV:REDIRECT_STATUS} ^$
+# RewriteCond %{REQUEST_FILENAME} -f
+# RewriteRule \.php$ - [R=404,L]
+
+# masquer les extensions de fichier dans les URL
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]

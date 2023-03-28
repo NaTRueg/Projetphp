@@ -32,6 +32,10 @@ if (!empty($_POST)) {
         $errors['email'] = "L'adresse email n'est pas valide.";
     }
 
+    if (!check_login($email, $motDePasse)) {
+        $errors['mot_de_passe'] = "L'adresse email ou le mot de passe est incorrect.";
+    }
+
     // Vérifiez si l'utilisateur existe et que le mot de passe est correct
     if (check_login($email, $motDePasse)) {
 

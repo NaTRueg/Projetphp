@@ -36,7 +36,7 @@ function checkEmailExistence($pdo, $email)
     return $query->fetchColumn() > 0;
 }
 
-function addUtilisateur(string $nom, string $prenom, string $dateNaissance, string $email, string $motDePasse){
+function addUtilisateur(string $nom, string $prenom, string $dateNaissance, string $email, string $motDePasse) {
     
     // Construction du Data Source Name
     $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
@@ -59,6 +59,12 @@ function addUtilisateur(string $nom, string $prenom, string $dateNaissance, stri
 
     $query = $pdo->prepare($sql);
     $query->execute([$nom, $prenom, $dateNaissance, $email, $hash]);
+
+    // Récupération de l'ID de l'utilisateur nouvellement inscrit
+    $utilisateur_id = $pdo->lastInsertId();
+
+    // Retourne l'ID de l'utilisateur nouvellement inscrit
+    return $utilisateur_id;
 }
 
 

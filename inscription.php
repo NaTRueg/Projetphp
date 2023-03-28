@@ -104,7 +104,8 @@ if (!empty($_POST)) {
             $utilisateur_id = addUtilisateur($nom, $prenom, $date_naissance_mysql, $email, $motDePasse);
 
             // Initialisation de la session avec l'ID de l'utilisateur
-            $_SESSION['user_id'] = $pdo->lastInsertId();
+            $_SESSION['user_id'] = $utilisateur_id;
+            
         
         // Redirection vers la page de soumission
         header("Location: Accueil");
