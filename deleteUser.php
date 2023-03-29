@@ -31,4 +31,5 @@ if (deleteUserAndAppointments($pdo, $_GET['user_id'])) {
     header('Location: Error');
     exit();
 }
+
 ?>

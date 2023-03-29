@@ -19,7 +19,5 @@ if (isset($_POST['rdv_id'])) {
 }
 
 // Redirige vers la page des rendez-vous
-header('Location: mesrdv.php');
+header('Location: MesRendez-vous');
 exit;
-
-?>

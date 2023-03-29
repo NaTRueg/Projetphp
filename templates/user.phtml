@@ -1,12 +1,12 @@
-<section class = "Gereruser">
+<section class="Gereruser">
 
     <h1>Liste des utilisateurs</h1>
 
 
     <div class="Docteurs">
-        <?php if (empty($users)): ?>
+        <?php if (empty($users)) : ?>
             <p>Aucun utilisateurs n'a été trouvé.</p>
-        <?php else: ?>
+        <?php else : ?>
             <table>
                 <thead>
                     <tr>
@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($users as $user): ?>
+                    <?php foreach ($users as $user) : ?>
                         <tr>
                             <td><?= $user['id'] ?></td>
                             <td><?= $user['nom'] ?></td>
@@ -28,7 +28,7 @@
                             <td><?= $user['email'] ?></td>
                             <td><?= getUserAge($pdo, $user['id']) ?></td>
                             <td><?= $user['role'] ?></td>
-                            <td><a href="deleteUser.php?user_id=<?= $user['id'] ?>">Supprimer</a></td>
+                            <td><a href="deleteUser?user_id=<?= $user['id'] ?>">Supprimer</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

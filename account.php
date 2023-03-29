@@ -25,35 +25,40 @@ if (isset($_POST['delete_account']) && $_POST['delete_account'] == 1) {
     // Supprime les informations de session et redirige vers la page de connexion
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000,
-            $params["path"], $params["domain"],
-            $params["secure"], $params["httponly"]
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
         );
     }
-        
-            // Enregistrer les variables de session de l'utilisateur dans un tableau temporaire
-        $userSession = array();
-        foreach ($_SESSION as $key => $value) {
-            if (strpos($key, 'user_') === 0) {
-                $userSession[$key] = $value;
-            }
+
+    // Enregistrer les variables de session de l'utilisateur dans un tableau temporaire
+    $userSession = array();
+    foreach ($_SESSION as $key => $value) {
+        if (strpos($key, 'user_') === 0) {
+            $userSession[$key] = $value;
         }
-
-        // Supprimer toutes les variables de session
-        $_SESSION = array();
-
-        // Réinitialiser la session avec les variables qui n'ont pas été supprimées
-        foreach ($userSession as $key => $value) {
-            $_SESSION[$key] = $value;
-        }
-
-        // Détruit la session
-        session_destroy();
-
-        // Rediriger l'utilisateur vers la page de connexion
-        header('Location: Connexion');
-        exit();
     }
+
+    // Supprimer toutes les variables de session
+    $_SESSION = array();
+
+    // Réinitialiser la session avec les variables qui n'ont pas été supprimées
+    foreach ($userSession as $key => $value) {
+        $_SESSION[$key] = $value;
+    }
+
+    // Détruit la session
+    session_destroy();
+
+    // Rediriger l'utilisateur vers la page de connexion
+    header('Location: Connexion');
+    exit();
+}
 
 // Affichage : inclusion du template
 $template = 'account';

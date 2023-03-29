@@ -3,7 +3,7 @@ const navLinks = document.querySelector(".navbar-right ul")
 
 
 menuHamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('mobile-menu')
+    navLinks.classList.toggle('mobile-menu')
 })
 
 
@@ -15,7 +15,7 @@ function geoFindMe() {
     const status = document.querySelector('#status');
 
     function success(position) {
-        const latitude  = position.coords.latitude;
+        const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
         // Récupérer l'élément iframe par son identifiant

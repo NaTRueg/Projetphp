@@ -40,8 +40,6 @@ $ville_id = $_SESSION['ville_id'] ;
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 
-
-
 if(isset($_POST['medecin_id'])) {
     $medecin_id = $_POST['medecin_id'];
   
@@ -82,12 +80,6 @@ exit;
 }
 
 
-
-
-
-
 // Affichage : inclusion du template
 $template = 'Confirmation';
 include 'templates/base.phtml';
-?>
-

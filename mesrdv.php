@@ -25,7 +25,8 @@ $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $rdvs = getRendezVousUtilisateur($pdo, $utilisateur_id);
 
 // Tri des rendez-vous par date
-function compareDates($a, $b) {
+function compareDates($a, $b)
+{
     $dateA = strtotime($a['date'] . ' ' . $a['heure']);
     $dateB = strtotime($b['date'] . ' ' . $b['heure']);
     if ($dateA == $dateB) {

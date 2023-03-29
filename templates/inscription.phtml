@@ -1,44 +1,44 @@
 <div class="login-page">
-<h1 style="text-shadow: 4px 2px 5px rgba(0, 0, 0, 0.5);">Inscription</h1>
-        <div class="form">
-          
-           <form class="login-form" method="POST" action="Inscription">
-           <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>">
-            <?php if (isset($errors['nom'])) : ?>
-               <p class="message error"><?= $errors['nom']; ?></p>
-            <?php endif; ?>
+   <h1 style="text-shadow: 4px 2px 5px rgba(0, 0, 0, 0.5);">Inscription</h1>
+   <div class="form">
 
-            <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>">
-            <?php if (isset($errors['prenom'])) : ?>
-               <p class="message error"><?= $errors['prenom']; ?></p>
-            <?php endif; ?>
+      <form class="login-form" method="POST" action="Inscription">
+         <label for="nom">Nom :</label>
+         <input type="text" id="nom" name="nom" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>">
+         <?php if (isset($errors['nom'])) : ?>
+            <p class="message error"><?= $errors['nom']; ?></p>
+         <?php endif; ?>
 
-            <label for="date_naissance">Date de naissance :</label>
-            <input type="date" id="date_naissance" name="date_naissance" value="<?php echo isset($_POST['date_naissance']) ? htmlspecialchars($_POST['date_naissance']) : ''; ?>">
-            <?php if (isset($errors['date_naissance'])) : ?>
-               <p class="message error"><?= $errors['date_naissance']; ?></p>
-            <?php endif; ?>
-            <label for="email">Email :</label>
-            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
-            <?php if (isset($errors['email'])) : ?>
-               <p class="message error"><?= $errors['email']; ?></p>
-            <?php endif; ?>
+         <label for="prenom">Prénom :</label>
+         <input type="text" id="prenom" name="prenom" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>">
+         <?php if (isset($errors['prenom'])) : ?>
+            <p class="message error"><?= $errors['prenom']; ?></p>
+         <?php endif; ?>
 
-            <label for="mot_de_passe">Mot de passe :</label>
-            <input type="password" id="mot_de_passe" name="mot_de_passe">
-            <?php if (isset($errors['mot_de_passe'])) : ?>
-               <p class="message error"><?= $errors['mot_de_passe']; ?></p>
-            <?php endif; ?>
+         <label for="date_naissance">Date de naissance :</label>
+         <input type="date" id="date_naissance" name="date_naissance" value="<?php echo isset($_POST['date_naissance']) ? htmlspecialchars($_POST['date_naissance']) : ''; ?>">
+         <?php if (isset($errors['date_naissance'])) : ?>
+            <p class="message error"><?= $errors['date_naissance']; ?></p>
+         <?php endif; ?>
+         <label for="email">Email :</label>
+         <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+         <?php if (isset($errors['email'])) : ?>
+            <p class="message error"><?= $errors['email']; ?></p>
+         <?php endif; ?>
 
-              <input type="submit" value="S'inscrire" class="btn">
-               <p class="message"> Conditions générales d'utilisation <a href="ConditionsGénérales">Lire</a></p>
-               <p class="message">Vous avez déjà un compte? <a href="Connexion">Se connecter</a></p>
-           </form>
-        </div>
-      </div>
+         <label for="mot_de_passe">Mot de passe :</label>
+         <input type="password" id="mot_de_passe" name="mot_de_passe">
+         <?php if (isset($errors['mot_de_passe'])) : ?>
+            <p class="message error"><?= $errors['mot_de_passe']; ?></p>
+         <?php endif; ?>
 
-   
+         <input type="submit" value="S'inscrire" class="btn">
+         <p class="message"> Conditions générales d'utilisation <a href="ConditionsGénérales">Lire</a></p>
+         <p class="message">Vous avez déjà un compte? <a href="Connexion">Se connecter</a></p>
+      </form>
+   </div>
+</div>
+
+
 
 </header>

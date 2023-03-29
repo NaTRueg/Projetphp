@@ -5,7 +5,8 @@ require_once 'config.php';
 
 
 
-function getPDOConnection() {
+function getPDOConnection()
+{
 
     // Construction du Data Source Name
     $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8';
@@ -19,7 +20,7 @@ function getPDOConnection() {
     // Création de la connexion PDO (création d'un objet PDO)
     $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
     $pdo->exec('SET NAMES UTF8');
-    
+
     return $pdo;
 }
 
@@ -36,8 +37,9 @@ function checkEmailExistence($pdo, $email)
     return $query->fetchColumn() > 0;
 }
 
-function addUtilisateur(string $nom, string $prenom, string $dateNaissance, string $email, string $motDePasse) {
-    
+function addUtilisateur(string $nom, string $prenom, string $dateNaissance, string $email, string $motDePasse)
+{
+
     // Construction du Data Source Name
     $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
 
@@ -69,7 +71,8 @@ function addUtilisateur(string $nom, string $prenom, string $dateNaissance, stri
 
 
 
-function check_login(string $email, string $motDePasse): bool {
+function check_login(string $email, string $motDePasse): bool
+{
     // Construction du Data Source Name
     $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
 
@@ -108,44 +111,49 @@ function check_login(string $email, string $motDePasse): bool {
     }
 }
 
-function getUserEmail($pdo, $userId) {
+function getUserEmail($pdo, $userId)
+{
     $stmt = $pdo->prepare("SELECT email FROM utilisateur WHERE id = ?");
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
     return $user['email'];
 }
 
-function getUserName($pdo, $userId) {
+function getUserName($pdo, $userId)
+{
     $stmt = $pdo->prepare("SELECT nom FROM utilisateur WHERE id = ?");
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
     return $user['nom'];
 }
 
-function getUserFirstname($pdo, $userId) {
+function getUserFirstname($pdo, $userId)
+{
     $stmt = $pdo->prepare("SELECT prenom FROM utilisateur WHERE id = ?");
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
     return $user['prenom'];
 }
 
-function getUserAge($pdo, $userId) {
+function getUserAge($pdo, $userId)
+{
     $query = "SELECT date_naissance FROM utilisateur WHERE id = ?";
     $statement = $pdo->prepare($query);
     $statement->bindParam(1, $userId, PDO::PARAM_INT);
     $statement->execute();
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     $dob = $result['date_naissance'];
-    
+
     // Calculer l'âge à partir de la date de naissance
     $today = new DateTime();
     $birthdate = new DateTime($dob);
     $age = $today->diff($birthdate)->y;
-    
+
     return $age;
 }
 
-function deleteUserAndAppointments($pdo, $user_id) {
+function deleteUserAndAppointments($pdo, $user_id)
+{
     // Démarrer une transaction
     $pdo->beginTransaction();
 
@@ -172,7 +180,8 @@ function deleteUserAndAppointments($pdo, $user_id) {
     }
 }
 
-function deleteDoctorAndAppointments($pdo, $doctor_id) {
+function deleteDoctorAndAppointments($pdo, $doctor_id)
+{
     // Démarrer une transaction
     $pdo->beginTransaction();
 
@@ -200,7 +209,8 @@ function deleteDoctorAndAppointments($pdo, $doctor_id) {
 }
 
 
-function getRendezVousUtilisateur($pdo, $utilisateur_id) {
+function getRendezVousUtilisateur($pdo, $utilisateur_id)
+{
     $sql = "SELECT rendez_vous.id, rendez_vous.heure, rendez_vous.date, medecins.nom AS nom_medecin
             FROM rendez_vous
             JOIN medecins ON rendez_vous.medecin_id = medecins.id
@@ -211,14 +221,16 @@ function getRendezVousUtilisateur($pdo, $utilisateur_id) {
     return $resultats;
 }
 
-function deleteRdv($pdo, $id) {
+function deleteRdv($pdo, $id)
+{
     $stmt = $pdo->prepare('DELETE FROM rendez_vous WHERE id = ?');
     $stmt->execute([$id]);
     return $stmt->rowCount() > 0;
 }
 
 
-function getMedecins($pdo) {
+function getMedecins($pdo)
+{
     $sql = "SELECT medecins.id, medecins.nom, medecins.email, specialites.nom AS specialite, villes.nom AS ville 
             FROM medecins 
             INNER JOIN specialites ON medecins.specialite_id = specialites.id 
@@ -228,7 +240,7 @@ function getMedecins($pdo) {
     $stmt->execute();
 
     $medecins = array();
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $medecin = array();
         $medecin['id'] = $row['id'];
         $medecin['nom'] = $row['nom'];
@@ -239,6 +251,3 @@ function getMedecins($pdo) {
     }
     return $medecins;
 }
-
-
-

@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctowebline</title>
-    <meta name="robots" content="index,follow,snippet">
-    <meta name="description" content="Trouvez un professionnel de santé en ligne avec Doctolib. Prenez rendez-vous en quelques clics avec un médecin généraliste, un spécialiste, un dentiste, un kiné et bien d'autres. Consultez des avis et des disponibilités en temps réel. Simplifiez la prise de rendez-vous médical dès maintenant.">
-    <link rel="stylesheet" href="http://localhost/Code/Projet/css/style.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/2c8b369b04.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="./icone.ico">
-   
-  </head>
-  <body>
-    <header class="Intro">
-      
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctowebline</title>
+  <meta name="robots" content="index,follow,snippet">
+  <meta name="description" content="Trouvez un professionnel de santé en ligne avec Doctolib. Prenez rendez-vous en quelques clics avec un médecin généraliste, un spécialiste, un dentiste, un kiné et bien d'autres. Consultez des avis et des disponibilités en temps réel. Simplifiez la prise de rendez-vous médical dès maintenant.">
+  <link rel="stylesheet" href="http://localhost/Code/Projet/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2c8b369b04.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="./icone.ico">
+
+</head>
+
+<body>
+  <header class="Intro">
+
     <nav class="navbar">
       <div class="navbar-left">
         <a href="Accueil"><img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Doctowebline Logo"></a>
@@ -28,96 +30,94 @@
           <li><a href="Accueil">Accueil</a></li>
 
           <?php
-            if (isset($_SESSION['user_id'])) {
-              // Si l'utilisateur est connecté
+          if (isset($_SESSION['user_id'])) {
+            // Si l'utilisateur est connecté
 
-              if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
-                // Si l'utilisateur est un admin, on affiche les boutons "Gérer docteurs" et "Utilisateur"
-                echo '
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+              // Si l'utilisateur est un admin, on affiche les boutons "Gérer docteurs" et "Utilisateur"
+              echo '
                   <li><a href="GérerDocteurs">Gérer docteurs</a></li>
                   <li><a href="Utilisateurs">Utilisateurs</a></li>
                 ';
-              } else {
-                // Sinon, on affiche les boutons "Prendre rdv" et "Mes rendez-vous"
-                echo '
+            } else {
+              // Sinon, on affiche les boutons "Prendre rdv" et "Mes rendez-vous"
+              echo '
                   <li><a href="Rendez-vous">Prendre rdv</a></li>
                   <li><a href="MesRendez-vous">Mes rendez-vous</a></li>
                 ';
-              }
-
-            } else {
-              // Si l'utilisateur n'est pas connecté, on affiche les boutons "À propos de nous" et "Localiser"
-              echo '
+            }
+          } else {
+            // Si l'utilisateur n'est pas connecté, on affiche les boutons "À propos de nous" et "Localiser"
+            echo '
                 <li><a href="Accueil#AboutUs">À propos de nous</a></li>
                 <li><a href="Accueil#LocaliserDesDocteurs">Localiser</a></li>
               ';
-            }
+          }
           ?>
 
 
           <li><a href="#Contact">Contact</a></li>
-          
+
         </ul>
-        
+
       </div>
       <div class="navbar-icons">
 
         <?php if (isset($_SESSION['user_id'])) { ?>
-            <a href="Déconnexion"><button>Déconnexion</button></a>
+          <a href="Déconnexion"><button>Déconnexion</button></a>
         <?php } else { ?>
-            <a href="Inscription"><button>S'inscrire</button></a>
+          <a href="Inscription"><button>S'inscrire</button></a>
         <?php } ?>
         <?php if (isset($_SESSION['user_id'])) { ?>
           <a href="Moncompte"><i class="fa-solid fa-circle-user" alt="Mon compte"></i></a>
         <?php } else { ?>
           <a href="Connexion"><i class="fa-solid fa-circle-user" alt="Se connecter"></i></a>
         <?php } ?>
-        
-          <div class="burger">
-              <i class="fa-solid fa-bars"></i>
-          </div>
+
+        <div class="burger">
+          <i class="fa-solid fa-bars"></i>
+        </div>
       </div>
-    
+
     </nav>
-    
-      <main class="container-md">
-        <?php include $template . '.phtml'; ?>
-      </main>
-      
-      <footer id="Contact">
-        <div class="containerfoot">
-          <div class="logofooter">
-            <img src="img/FOOTER.png" alt="Doctowebline logo">
-          </div>
-          <div class="info-col">
-            <h4>Informations</h4>
-            <ul>
-              <li><a href="#Contact">Contact</a></li>
-              <li><a href="MentionsLégales">Mention légales</a></li>
-              <li><a href="ConditionsGénérales">Conditions générales d'utilisation</a></li>
-            </ul>
-          </div>
-          <div class="contact-col">
-            <h4>Nous contacter</h4>
-            <ul>
-              <li><i class="fas fa-phone"></i> 04.05.06.07.08</li>
-              <li><i class="fas fa-envelope"></i> Doctowebline@Mail.fr</li>
-              <li><i class="fas fa-map-marker-alt"></i> Marseille</li>
-            </ul>
-            <div class="social-icons">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
+
+    <main class="container-md">
+      <?php include $template . '.phtml'; ?>
+    </main>
+
+    <footer id="Contact">
+      <div class="containerfoot">
+        <div class="logofooter">
+          <img src="img/FOOTER.png" alt="Doctowebline logo">
+        </div>
+        <div class="info-col">
+          <h4>Informations</h4>
+          <ul>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="MentionsLégales">Mention légales</a></li>
+            <li><a href="ConditionsGénérales">Conditions générales d'utilisation</a></li>
+          </ul>
+        </div>
+        <div class="contact-col">
+          <h4>Nous contacter</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> 04.05.06.07.08</li>
+            <li><i class="fas fa-envelope"></i> Doctowebline@Mail.fr</li>
+            <li><i class="fas fa-map-marker-alt"></i> Marseille</li>
+          </ul>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
-        <p class="footext">Copyright © 2023</p>
-      </footer>
+      </div>
+      <p class="footext">Copyright © 2023</p>
+    </footer>
 
-      <script type="text/javascript" src="js/config.js"></script>
-      <script src="js/app.js"></script>
-  </body>
-  </html>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script src="js/app.js"></script>
+</body>
 
-  
+</html>

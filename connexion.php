@@ -56,13 +56,12 @@ if (!empty($_POST)) {
             // Rediriger vers la page d'accueil
             header("Location: Accueil");
             exit;
-
-            } else {
-                // Le nom d'utilisateur ou le mot de passe est incorrect
-                $errors['login'] = "L'adresse email ou le mot de passe est incorrect.";
-            }
+        } else {
+            // Le nom d'utilisateur ou le mot de passe est incorrect
+            $errors['login'] = "L'adresse email ou le mot de passe est incorrect.";
         }
     }
+}
 
 // Affichage : inclusion du template
 $template = 'connexion';

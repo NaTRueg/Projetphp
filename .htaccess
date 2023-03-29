@@ -33,12 +33,37 @@ RewriteRule ^GérerDocteurs$ docteur.php [L]
 RewriteRule ^Error$ error.php [L]
 
 
-# # Interdit l'accès direct aux fichiers PHP
-# RewriteCond %{ENV:REDIRECT_STATUS} ^$
-# RewriteCond %{REQUEST_FILENAME} -f
-# RewriteRule \.php$ - [R=404,L]
+# Interdire l'ajout de l'extension .php dans les URL
+RewriteCond %{THE_REQUEST} \.php[\s?] [NC]
+RewriteRule ^ - [R=404,L]
 
 # masquer les extensions de fichier dans les URL
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Rediriger les URL avec extension .php vers l'URL sans extension
+RewriteCond %{THE_REQUEST} \s/+(.+)\.php[\s?] [NC]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ - [R=404,L]
+
+
+# # Rediriger les URL avec extension .php vers l'URL sans extension
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.php -f
+# RewriteRule ^(.*)\.php$ /$1 [L,R=301]
+
+# # masquer les extensions de fichier dans les URL
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+# RewriteRule ^(.+)/?$ /$1.php [L]
+
+# # # Rediriger les URL avec extension .php vers l'URL sans extension
+# # RewriteCond %{THE_REQUEST} \s/+(.+)\.php[\s?] [NC]
+# # RewriteRule ^ /%1 [R=301,L,NE]
+
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+# RewriteRule ^(.*?)/?$ /$1.php [L]
+
+
