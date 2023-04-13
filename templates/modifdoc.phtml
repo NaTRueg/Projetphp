@@ -1,0 +1,28 @@
+<section class="Gereruser">
+  <h1>Modifier les informations du médecin</h1>
+  <?php if (!empty($message)) : ?>
+    <p class="message"><?= $message ?></p>
+  <?php endif; ?>
+  <form method="post" class="form" action="updateDoctor?id=<?= $medecin['id'] ?>">
+    <input type="hidden" name="id" value="<?= $medecin['id'] ?>">
+    <label for="nom">Nom :</label>
+    <input type="text" name="nom" id="nom" value="<?= $medecin['nom'] ?>">
+    <label for="email">Email :</label>
+    <input type="email" name="email" id="email" value="<?= $medecin['email'] ?>">
+    <label for="specialite">Spécialité :</label>
+    <select name="specialite" id="specialite">
+      <?php foreach ($specialites as $specialite) : ?>
+        <option value="<?= $specialite['id'] ?>" <?= ($specialite['id'] == $medecin['specialite_id']) ? 'selected' : '' ?>><?= $specialite['nom'] ?></option>
+      <?php endforeach; ?>
+    </select>
+    <label for="ville">Ville :</label>
+    <select name="ville" id="ville">
+      <?php foreach ($villes as $ville) : ?>
+        <option value="<?= $ville['id'] ?>" <?= ($ville['id'] == $medecin['ville_id']) ? 'selected' : '' ?>><?= $ville['nom'] ?></option>
+      <?php endforeach; ?>
+    </select>
+    <input type="submit" name="modifier" class="btn"  value="Modifier">
+  </form>
+</section>
+
+

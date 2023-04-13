@@ -336,3 +336,10 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- SQLADMINCODE : UPDATE utilisateur SET isAdmin = true WHERE id = 123;
+-- Créer des médecins pour chaque spécialité dans chaque ville
+-- INSERT INTO medecins (nom, email, specialite_id, ville_id)
+-- SELECT CONCAT('Docteur ', SUBSTRING_INDEX(s.nom, ' ', 1), ' ', SUBSTRING_INDEX(v.nom, ' ', 1)),
+-- CONCAT(LOWER(SUBSTRING_INDEX(s.nom, ' ', 1)), '.', LOWER(SUBSTRING_INDEX(v.nom, ' ', 1)), '@exemple.com'),
+-- s.id, v.id
+-- FROM specialites s, villes v
+-- ORDER BY s.id, v.id;

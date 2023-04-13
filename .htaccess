@@ -30,6 +30,7 @@ RewriteRule ^ConditionsGénérales$ cgu.php [L]
 RewriteRule ^Administrateur$ admin.php [L]
 RewriteRule ^Utilisateurs$ user.php [L]
 RewriteRule ^GérerDocteurs$ docteur.php [L]
+RewriteRule ^ModifierDocteurs$ updateDoctor.php [L]
 RewriteRule ^Error$ error.php [L]
 
 

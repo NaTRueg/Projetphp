@@ -59,7 +59,7 @@
               <td><?= $medecin['email'] ?></td>
               <td><?= $medecin['specialite'] ?></td>
               <td><?= $medecin['ville'] ?></td>
-              <td><a href="deleteDoc?doctor_id=<?= $medecin['id'] ?>">Supprimer</a></td>
+              <td><a href="deleteDoc?doctor_id=<?= $medecin['id'] ?>">Supprimer</a>||<a href="updateDoctor?id=<?= $medecin['id'] ?>">Modifier</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

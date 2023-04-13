@@ -127,6 +127,10 @@ header {
 
 }
 
+#status {
+	display: none;
+}
+
 .burger {
 	display: none;
 }
