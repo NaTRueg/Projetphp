@@ -1,3 +1,13 @@
+
+window.onload = function() {
+    document.body.style.opacity = "1";
+  }
+
+window.onunload = function() {
+    document.body.style.opacity = "0";
+};
+
+
 const menuHamburger = document.querySelector(".burger")
 const navLinks = document.querySelector(".navbar-right ul")
 
@@ -44,5 +54,7 @@ function geoFindMe() {
 }
 
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
+
+
 
 
