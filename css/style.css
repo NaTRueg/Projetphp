@@ -1273,7 +1273,7 @@ footer h4 {
 	justify-content: center;
 	align-items: center;
 	border-radius: 50px;
-	padding: 10px;
+	padding: 20px;
 	margin-bottom: 20px;
 	background-color: #142457;
 	-webkit-border-radius: 50px;
@@ -1307,7 +1307,7 @@ footer h4 {
     border: 2px #00000036 solid;
     margin-bottom: 20px;
     border-radius: 10PX;
-    padding: 10px;
+    padding: 30px;
 }
 
 .Rdv-header i {
