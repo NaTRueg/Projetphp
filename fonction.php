@@ -211,15 +211,18 @@ function deleteDoctorAndAppointments($pdo, $doctor_id)
 
 function getRendezVousUtilisateur($pdo, $utilisateur_id)
 {
-    $sql = "SELECT rendez_vous.id, rendez_vous.heure, rendez_vous.date, medecins.nom AS nom_medecin
-            FROM rendez_vous
-            JOIN medecins ON rendez_vous.medecin_id = medecins.id
-            WHERE rendez_vous.utilisateur_id = ?";
+    $sql = "SELECT rendez_vous.id, rendez_vous.heure, rendez_vous.date, medecins.nom AS nom_medecin, specialites.nom AS specialite_medecin, villes.nom AS ville_medecin
+    FROM rendez_vous
+    JOIN medecins ON rendez_vous.medecin_id = medecins.id
+    JOIN specialites ON medecins.specialite_id = specialites.id
+    JOIN villes ON medecins.ville_id = villes.id
+    WHERE rendez_vous.utilisateur_id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$utilisateur_id]);
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $resultats;
 }
+
 
 function deleteRdv($pdo, $id)
 {

@@ -1220,7 +1220,9 @@ footer h4 {
 }
 
 .Rdv {
-	text-align: center;
+	
+	display: flex;
+	flex-direction: column;
 	background-color: #ffffffe3;
 	border: 1px solid #ccc;
 	padding: 20px;
@@ -1233,11 +1235,93 @@ footer h4 {
 	-o-border-radius: 50px;
 }
 
+
+
+.Rdv-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50px;
+	padding: 10px;
+	margin-bottom: 20px;
+	background-color: #142457;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+}
+
+.Rdv-footer {
+    display: flex;
+	justify-content: center;
+    align-items: center;
+  
+}
+
+.DocIcon {
+	align-self: center;
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 50%;
+    background-color: #142457;
+    COLOR: white;
+}
+
+
+
+.Rdv-content {
+	display: flex;
+    flex-direction: row;
+	place-content: space-evenly;
+    border: 2px #00000036 solid;
+    margin-bottom: 20px;
+    border-radius: 10PX;
+    padding: 10px;
+}
+
+.Rdv-header i {
+	color: white;
+	text-align: center;
+}
+
+.Rdv-header p {
+	color: white;
+	text-align: center;
+}
+
+
+.Rdv-header-icon {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.Rdv-header-date {
+	margin-right: 10px;
+}
+
+.Rdv-header-time {
+	margin-right: 10px;
+}
+
+.Rdv-header-location {
+	margin-right: 10px;
+}
+
+.Rdv-content p {
+    font-weight: bold;
+   
+}
+
+.spe {
+	color : #747070;
+}
+
 .supprimer-rdv {
 
 	background-color: #ba1212;
 	color: white;
 	border: none;
+	text-align: center;
 	padding: 10px 20px;
 	border-radius: 20px;
 	cursor: pointer;
@@ -1378,3 +1462,5 @@ footer h4 {
 .Docteurs tbody tr td {
 	border: 2px black solid !important;
 }
+
+

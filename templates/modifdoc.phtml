@@ -1,5 +1,5 @@
 <section class="Gereruser">
-  <h1>Modifier les informations du médecin</h1>
+  <h1>Informations du médecin</h1>
   <?php if (!empty($message)) : ?>
     <p class="message"><?= $message ?></p>
   <?php endif; ?>
@@ -10,13 +10,13 @@
     <label for="email">Email :</label>
     <input type="email" name="email" id="email" value="<?= $medecin['email'] ?>">
     <label for="specialite">Spécialité :</label>
-    <select name="specialite" id="specialite">
+    <select name="specialite" id="specialite_id">
       <?php foreach ($specialites as $specialite) : ?>
         <option value="<?= $specialite['id'] ?>" <?= ($specialite['id'] == $medecin['specialite_id']) ? 'selected' : '' ?>><?= $specialite['nom'] ?></option>
       <?php endforeach; ?>
     </select>
     <label for="ville">Ville :</label>
-    <select name="ville" id="ville">
+    <select name="ville" id="ville_id">
       <?php foreach ($villes as $ville) : ?>
         <option value="<?= $ville['id'] ?>" <?= ($ville['id'] == $medecin['ville_id']) ? 'selected' : '' ?>><?= $ville['nom'] ?></option>
       <?php endforeach; ?>

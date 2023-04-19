@@ -5,22 +5,57 @@
 </div>
 
 <section class="LesRDV">
-
-
+    <!-- 
     <?php foreach ($rdvs as $rdv) { ?>
-        <div class="Rdv">
+         <div class="Rdv" id="rdv-<?php echo $rdv['id']; ?>">
+         
             <p>
                 Rendez-vous avec le médecin <?= $rdv['nom_medecin'] ?> <br>
-                Le <?= date('d/m/Y', strtotime($rdv['date'])) ?> à <?= date('H:i', strtotime($rdv['heure'])) ?>
+                Le <?php echo $formatter->format($date); ?> <?= date('d/m/Y', strtotime($rdv['date'])) ?> à <?= date('H:i', strtotime($rdv['heure'])) ?> à <?= $rdv['ville_medecin'] ?>
 
             <form method="post" action="rdvsupp">
                 <input type="hidden" name="rdv_id" value="<?php echo $rdv['id']; ?>">
-                <button class="supprimer-rdv" type="submit">&times; Supprimer mon rendez-vous</button>
+
+                <button class="supprimer-rdv" type="button" data-rdv-id="<?php echo $rdv['id']; ?>" onclick="supprimerRdv(this)"> &times; Supprimer mon rendez-vous</button>
 
             </form>
             </p>
         </div>
-    <?php } ?>
+    <?php } ?> -->
+    <?php foreach ($rdvs as $rdv) { ?>
+        <div class="Rdv" id="rdv-<?php echo $rdv['id']; ?>">
+            <div class="Rdv-header">
+                <div class="Rdv-header-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="Rdv-header-date">
+                <p><?php echo ucfirst($formatter->format($date)); ?> <?= date('d/m/Y', strtotime($rdv['date'])) ?></p>
 
+                </div>
+                <div class="Rdv-header-icon"><i class="fas fa-clock"></i></div>
+                <div class="Rdv-header-time">
+                    <p><?php echo date('H:i', strtotime($rdv['heure'])); ?></p>
+                </div>
+                <div class="Rdv-header-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="Rdv-header-location">
+                    <p><?php echo $rdv['ville_medecin']; ?></p>
+                </div>
+            </div>
+            <div class="Rdv-content">
+                <div class="DocIcon" />
+                <i class="fa-solid fa-user-doctor fa-2xl"></i>
+            </div>
+            <div class=Doctext">
+                <p>Docteur <?= $rdv['nom_medecin'] ?></p>
+                <p class="spe"><?= $rdv['specialite_medecin'] ?></p>
+            </div>
+        </div>
+        <div class="Rdv-footer">
+        <form method="post" action="rdvsupp">
+            <input type="hidden" name="rdv_id" value="<?php echo $rdv['id']; ?>">
+            <button class="supprimer-rdv" type="button" data-rdv-id="<?php echo $rdv['id']; ?>" onclick="supprimerRdv(this)"> &times; Annuler le RDV</button>
+        </form>
+        </div>
+        </div>
+
+    <?php } ?>
 
 </section>

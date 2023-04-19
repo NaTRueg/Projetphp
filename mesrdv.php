@@ -2,6 +2,7 @@
 // Démarrage de la session
 session_start();
 
+setlocale(LC_TIME, 'fr_FR.UTF-8');
 
 $utilisateur_id = $_SESSION['user_id'];
 
@@ -24,6 +25,7 @@ $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 // Récupération des rendez-vous de l'utilisateur
 $rdvs = getRendezVousUtilisateur($pdo, $utilisateur_id);
 
+
 // Tri des rendez-vous par date
 function compareDates($a, $b)
 {
@@ -35,6 +37,13 @@ function compareDates($a, $b)
     return ($dateA < $dateB) ? -1 : 1;
 }
 usort($rdvs, 'compareDates');
+
+$formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+$formatter->setPattern('EEEE'); // définir le format pour afficher le jour de la semaine
+
+foreach ($rdvs as $rdv) {
+    $date = new DateTime($rdv['date']); // créer un objet DateTime à partir de la date du rendez-vous
+}
 
 
 
