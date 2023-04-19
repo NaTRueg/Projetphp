@@ -1167,11 +1167,41 @@ footer h4 {
 
 }
 
-.COMPTE {
-	margin-block-end: 200px;
-	margin-block-start: 200px;
-	text-align: center;
+.Account {
+	display: flex;
+	justify-content: center;
 
+}
+
+.COMPTE  {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border: solid 2px rgba(9, 97, 87, 1);
+	padding: 50px;
+	background-color: rgb(235 235 235);
+	box-shadow: 25px 25px 20px rgba(0, 0, 0, 0.1);
+	margin-top: 50px;
+	margin-bottom: 200px;
+	border-radius: 60px;
+	-webkit-border-radius: 60px;
+	-moz-border-radius: 60px;
+	-ms-border-radius: 60px;
+	-o-border-radius: 60px;
+}
+
+.COMPTE h1 {
+	text-align: center;
+}
+
+.compteinfo { 
+	display: flex;
+	flex-direction:row ;
+}
+
+.Preinfo {
+	font-weight: bold;
+	margin-right: 2px;
 }
 
 .COMPTE button {
@@ -1187,6 +1217,7 @@ footer h4 {
 	font-family: 'Montserrat';
 	font-size: 16px;
 	text-decoration: none;
+	margin-top: 30px;
 
 }
 
