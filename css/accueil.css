@@ -1,0 +1,61 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Dancing Script', cursive;
+   
+    background-color:rgba(9, 97, 87, 1) ;
+
+}
+
+.Accueil {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.Accueil img {
+    width : 50%
+}
+
+.Accueil h1 {
+    font-size: 3em;
+    font-weight: 700;
+    color: #e7e7e7;
+}
+
+.Accueil button {
+    background: #F92D45;
+    color: #e7e7e7;
+    padding: 20px 16px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 300PX;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease;
+    box-shadow: 5px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px ;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.Accueil button:hover {
+	background:  #e7e7e7;
+	color:  #F92D45;
+	transition: background-color 0.3s ease;
+    text-shadow: 5px 5px 10px #811421;
+	transition: 0.5s ease-in-out;
+	-webkit-transition: 0.5s ease-in-out;
+	-moz-transition: 0.5s ease-in-out;
+	-ms-transition: 0.5s ease-in-out;
+	-o-transition: 0.5s ease-in-out;
+}
