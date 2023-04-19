@@ -16,10 +16,21 @@
 <body>
     <section class="Accueil">
         <h1>Bienvenue</h1>
-        <img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo"
-            alt="Doctowebline Logo">
-            <a href="Accueil"><button>Entrer</button></a>
+        <img src="img/doctowebline-high-resolution-logo-color-on-transparent-background.png" class="logo" alt="Doctowebline Logo">
+        <button id="btn-enter">Entrer</button>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btn-enter').click(function () {
+                $('body').fadeOut(500, function () {
+                    window.location.href = 'Accueil';
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
