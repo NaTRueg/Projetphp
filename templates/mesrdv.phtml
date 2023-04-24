@@ -27,7 +27,7 @@
             <div class="Rdv-header">
                 <div class="Rdv-header-icon"><i class="fas fa-calendar-alt"></i></div>
                 <div class="Rdv-header-date">
-                <p><?php echo ucfirst($formatter->format($date)); ?> <?= date('d/m/Y', strtotime($rdv['date'])) ?></p>
+                <p><?php echo ucfirst($formatter->format(strtotime($rdv['date']))); ?> <?= date('d/m/Y', strtotime($rdv['date'])) ?></p>
 
                 </div>
                 <div class="Rdv-header-icon"><i class="fas fa-clock"></i></div>

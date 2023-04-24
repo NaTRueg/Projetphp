@@ -38,12 +38,13 @@ function compareDates($a, $b)
 }
 usort($rdvs, 'compareDates');
 
-$formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
-$formatter->setPattern('EEEE'); // définir le format pour afficher le jour de la semaine
 
 foreach ($rdvs as $rdv) {
     $date = new DateTime($rdv['date']); // créer un objet DateTime à partir de la date du rendez-vous
 }
+
+$formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+$formatter->setPattern('EEEE'); // définir le format pour afficher le jour de la semaine
 
 
 
