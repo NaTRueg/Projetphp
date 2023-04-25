@@ -16,9 +16,13 @@ body {
 
 
 header {
-	background: url(./Header.png) center center/cover no-repeat content-box;
-	overflow: hidden;
+    background: url(./Header.png) center center no-repeat content-box;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
 }
+
+
 
 .navbar-right ul {
 	display: flex;
@@ -79,7 +83,7 @@ header {
 
 .navbar-icons i {
 
-	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0) !important;
 	font-size: 2.5em;
 	transition-duration: 1s;
 
@@ -87,7 +91,7 @@ header {
 
 .navbar-icons i:hover {
 
-	color: #F92D45;
+	color: #F92D45 !important;;
 	font-size: 2.7em;
 	transition-duration: 1s;
 	text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -218,8 +222,9 @@ header {
 
 
 	.navbar-left img {
-		width: 115px;
+		width: 120px;
 		margin-right: 0px;
+		margin-left: -10px;
 		margin-block-start: 0px;
 	}
 
@@ -545,11 +550,15 @@ h2 span {
 	}
 
 	.circular-image {
-		width: 250px;
-		height: 220px;
+		width: 200px;
+		height: 200px;
 		border-radius: 50%;
 		object-fit: cover;
 
+	}
+
+	.deux a {
+		padding: 0;
 	}
 }
 
@@ -1255,6 +1264,13 @@ footer h4 {
 		flex-direction: column;
 	}
 
+}
+
+.noRdv {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	margin-bottom: 200px;
 }
 
 .Rdv {

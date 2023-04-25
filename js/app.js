@@ -1,15 +1,15 @@
 
-window.addEventListener("beforeunload", function() {
+window.addEventListener("beforeunload", function () {
     document.body.style.opacity = "0";
-    setTimeout(function() {
-      document.body.style.opacity = "1";
+    setTimeout(function () {
+        document.body.style.opacity = "1";
     }, 1000); // ajustez la durée de fondu selon vos besoins
-  });
-  
+});
 
-window.onload = function() {
+
+window.onload = function () {
     document.body.style.opacity = "1";
-  }
+}
 
 
 

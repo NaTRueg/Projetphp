@@ -5,8 +5,10 @@ function supprimerRdv(button) {
         xhr.onreadystatechange = function() {
             if (this.readyState === 4) {
                 if (this.status === 200) {
-                    var rdv = document.getElementById('rdv-' + rdv_id);
-                    rdv.parentNode.removeChild(rdv);
+                    // effet de fondu
+                    $('#rdv-' + rdv_id).fadeOut('slow', function() {
+                        $(this).remove();
+                    });
                 } else {
                     alert('Une erreur s\'est produite. Veuillez réessayer plus tard.');
                 }
