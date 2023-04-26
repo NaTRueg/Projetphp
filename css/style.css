@@ -1195,7 +1195,7 @@ footer h4 {
 	justify-content: center;
 	border: solid 2px rgba(9, 97, 87, 1);
 	padding: 50px;
-	background-color: rgb(235 235 235);
+	background-color: #142457;
 	box-shadow: 25px 25px 20px rgba(0, 0, 0, 0.1);
 	margin-top: 50px;
 	margin-bottom: 200px;
@@ -1208,16 +1208,23 @@ footer h4 {
 
 .COMPTE h1 {
 	text-align: center;
+	color : white;
+}
+
+.COMPTE p {
+	color: white;
 }
 
 .compteinfo { 
 	display: flex;
 	flex-direction:row ;
+	justify-content: space-between;
 }
 
 .Preinfo {
 	font-weight: bold;
 	margin-right: 2px;
+	color: #F92D45 !important;
 }
 
 .COMPTE button {

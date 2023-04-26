@@ -3,7 +3,7 @@
 // Démarrage de la session
 session_start();
 
-// Vérifie si l'utilisateur est déjà connecté, si oui, redirige-le vers la page de soumission
+// Vérifie si l'utilisateur est déjà connecté, si oui, redirige-le vers la page d'accueil
 if (isset($_SESSION['user_id'])) {
     header("Location: Accueil");
     exit();

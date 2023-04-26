@@ -20,8 +20,8 @@ $pdo = getPdoConnection();
 // Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer les données du formulaire
-    $nom = $_POST['nom'];
-    $email = $_POST['email'];
+    $nom = trim(htmlspecialchars($_POST['nom']));;
+    $email = trim(htmlspecialchars($_POST['email']));
     $specialite_id = $_POST['specialite_id'];
     $ville_id = $_POST['ville_id'];
 

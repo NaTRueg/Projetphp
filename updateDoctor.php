@@ -48,10 +48,30 @@ $medecin = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $doctor_id = $_POST['id'];
-    $nom = $_POST['nom'];
-    $email = $_POST['email'];
+    $nom = trim(htmlspecialchars($_POST['nom']));;
+    $email = trim(htmlspecialchars($_POST['email']));
     $ville_id = $_POST['ville']; // Ajout de cette variable
     $specialite_id = $_POST['specialite']; // Ajout de cette variable
+    
+      // Valider les données du formulaire
+      if (empty($nom)) {
+        $errors['nom'] = "Le nom est obligatoire";
+    }
+
+    if (empty($email)) {
+        $errors['email'] = "L'email est obligatoire";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "L'email n'est pas valide";
+    }
+
+    if (empty($specialite_id)) {
+        $errors['specialite_id'] = "La spécialité est obligatoire";
+    }
+
+    if (empty($ville_id)) {
+        $errors['ville_id'] = "La ville est obligatoire";
+    }
+
     $sql = "UPDATE medecins SET nom = :nom, email = :email, ville_id = :ville_id, specialite_id = :specialite_id WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':nom', $nom);
