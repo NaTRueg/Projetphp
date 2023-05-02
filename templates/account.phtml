@@ -18,7 +18,7 @@
       <p> <?php echo getUserAge($pdo, $_SESSION['user_id']); ?> ans</p>
     </div>
 
-    <form method="post" action="account" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">
+    <form method="post" action="Moncompte" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">
       <input type="hidden" name="delete_account" value="1">
       <button type="submit" class="supprimer-compte">Supprimer mon compte <i class="fa-solid fa-trash-can"></i></button>
     </form>

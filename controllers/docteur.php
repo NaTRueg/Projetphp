@@ -5,10 +5,10 @@
 session_start();
 
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
 
 // Redirige vers la page d'accueil si l'utilisateur n'est pas admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
@@ -16,8 +16,6 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
     exit();
 }
 
-// Connexion à la base de données
-$pdo = getPdoConnection();
 
 // Récupération des villes
 $query = "SELECT * FROM villes";
@@ -35,6 +33,9 @@ $specialites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Récupération de tous les médecins
 $medecins = getMedecins($pdo);
 
-// Affichage : inclusion du template
-$template = 'docteur';
-include 'templates/base.phtml';
+
+// Définition de la variable $template
+$template = '../templates/docteur';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

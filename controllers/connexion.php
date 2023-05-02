@@ -10,11 +10,13 @@ if (isset($_SESSION['user_id'])) {
 }
 
 
+
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
+
 
 
 // Initialisation des variables
@@ -40,7 +42,7 @@ if (!empty($_POST)) {
     if (check_login($email, $motDePasse)) {
 
         // Récupération de l'utilisateur depuis la base de données
-        $pdo = getPdoConnection();
+        
         $sql = "SELECT id, prenom, nom, isAdmin  FROM utilisateur WHERE email = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
@@ -63,6 +65,9 @@ if (!empty($_POST)) {
     }
 }
 
-// Affichage : inclusion du template
-$template = 'connexion';
-include 'templates/base.phtml';
+
+// Définition de la variable $template
+$template = '../templates/connexion';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

@@ -5,10 +5,10 @@
 session_start();
 
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
 
 
 
@@ -18,8 +18,6 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
     exit();
 }
 
-// Connexion à la base de données
-$pdo = getPdoConnection();
 
 // Récupération de tous les utilisateurs
 $query = "SELECT * FROM utilisateur";
@@ -31,7 +29,8 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 'true') {
     echo '<p style="color: green;">L\'utilisateur a été supprimé avec succès.</p>';
 }
 
+// Définition de la variable $template
+$template = '../templates/user';
 
-// Affichage : inclusion du template
-$template = 'user';
-include 'templates/base.phtml';
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

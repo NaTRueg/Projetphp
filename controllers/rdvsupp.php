@@ -8,10 +8,13 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once 'config.php';
-require_once 'fonction.php';
+// Inclusion de la config
+require_once '../app/config.php';
 
-$pdo = getPdoConnection();
+// Inclusion des dépendances
+require '../lib/fonction.php';
+
+
 
 if (isset($_POST['rdv_id'])) {
     $rdv_id = $_POST['rdv_id'];

@@ -5,10 +5,10 @@
 session_start();
 
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
 
 // Redirige vers la page d'accueil si la session n'est pas active
 if (!isset($_SESSION['user_id'])) {
@@ -16,8 +16,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Connexion à la base de données
-$pdo = getPdoConnection();
 
 if (isset($_POST['delete_account']) && $_POST['delete_account'] == 1) {
     // Supprimer le compte de l'utilisateur et tous les rendez-vous liés
@@ -60,6 +58,9 @@ if (isset($_POST['delete_account']) && $_POST['delete_account'] == 1) {
     exit();
 }
 
-// Affichage : inclusion du template
-$template = 'account';
-include 'templates/base.phtml';
+
+// Définition de la variable $template
+$template = '../templates/account';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

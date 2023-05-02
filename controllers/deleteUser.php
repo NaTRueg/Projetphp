@@ -3,31 +3,32 @@
 session_start();
 
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
 
-// Redirige vers la page d'accueil si l'utilisateur n'est pas admin
+// Redirige vers la page d'erreur si l'utilisateur n'est pas admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
     header('Location: Error');
     exit();
 }
 
 // Vérification des paramètres
-if (!isset($_GET['doctor_id'])) {
+if (!isset($_GET['user_id'])) {
     header('Location: admin.php');
     exit();
 }
 
-// Connexion à la base de données
-$pdo = getPdoConnection();
 
-// Suppression du médecin et de ses rendez-vous
-if (deleteDoctorAndAppointments($pdo, $_GET['doctor_id'])) {
-    header('Location: GérerDocteurs');
+
+// Suppression de l'utilisateur et de ses rendez-vous
+if (deleteUserAndAppointments($pdo, $_GET['user_id'])) {
+    header('Location: Utilisateurs');
     exit();
 } else {
     header('Location: Error');
     exit();
 }
+
+?>

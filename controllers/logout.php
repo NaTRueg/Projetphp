@@ -32,6 +32,8 @@ $_SESSION['flash'] = 'Vous êtes maintenant déconnecté. À bientôt !';
 header('Location: Accueil');
 exit;
 
-// Affichage : inclusion du template
-$template = 'logout';
-include 'templates/base.phtml';
+// Définition de la variable $template
+$template = '../templates/logout';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

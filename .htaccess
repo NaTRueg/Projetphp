@@ -16,22 +16,27 @@ ErrorDocument 404 /error.php
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-RewriteRule ^Accueil$ index.php [L]
-RewriteRule ^Connexion$ connexion.php [L]
-RewriteRule ^Inscription$ inscription.php [L]
-RewriteRule ^Confirmation$ confirmation.php [L]
-RewriteRule ^Moncompte$ account.php [L]
-RewriteRule ^Rendez-vous$ rdv.php [L]
-RewriteRule ^MesRendez-vous$ mesrdv.php [L]
-RewriteRule ^Confirmation$ confirmation.php [L]
-RewriteRule ^Déconnexion$ logout.php [L]
-RewriteRule ^MentionsLégales$ mention.php [L]
-RewriteRule ^ConditionsGénérales$ cgu.php [L]
-RewriteRule ^Administrateur$ admin.php [L]
-RewriteRule ^Utilisateurs$ user.php [L]
-RewriteRule ^GérerDocteurs$ docteur.php [L]
-RewriteRule ^ModifierDocteurs$ updateDoctor.php [L]
-RewriteRule ^Error$ error.php [L]
+RewriteRule ^Accueil$ controllers/index.php [L]
+RewriteRule ^Connexion$ controllers/connexion.php [L]
+RewriteRule ^Inscription$ controllers/inscription.php [L]
+RewriteRule ^Confirmation$ controllers/confirmation.php [L]
+RewriteRule ^Moncompte$ controllers/account.php [L]
+RewriteRule ^Rendez-vous$ controllers/rdv.php [L]
+RewriteRule ^MesRendez-vous$ controllers/mesrdv.php [L]
+RewriteRule ^Confirmation$ controllers/confirmation.php [L]
+RewriteRule ^Déconnexion$ controllers/logout.php [L]
+RewriteRule ^MentionsLégales$ controllers/mention.php [L]
+RewriteRule ^ConditionsGénérales$ controllers/cgu.php [L]
+RewriteRule ^Administrateur$ controllers/admin.php [L]
+RewriteRule ^Utilisateurs$ controllers/user.php [L]
+RewriteRule ^GérerDocteurs$ controllers/docteur.php [L]
+RewriteRule ^ModifierDocteurs$ controllers/updateDoctor.php [L]
+RewriteRule ^Error$ controllers/error.php [L]
+RewriteRule ^Rdvsupp$ controllers/rdvsupp.php [L]
+RewriteRule ^addDoc$ controllers/addDoc.php [L]
+RewriteRule ^updateDoctor$ controllers/updateDoctor.php [L]
+RewriteRule ^deleteDoc$ controllers/deleteDoc.php [L]
+RewriteRule ^deleteUser$ controllers/deleteUser.php [L]
 
 
 # Interdire l'ajout de l'extension .php dans les URL
@@ -49,22 +54,6 @@ RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^ - [R=404,L]
 
 
-# # Rediriger les URL avec extension .php vers l'URL sans extension
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteCond %{REQUEST_FILENAME}\.php -f
-# RewriteRule ^(.*)\.php$ /$1 [L,R=301]
 
-# # masquer les extensions de fichier dans les URL
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteCond %{DOCUMENT_ROOT}/$1.php -f
-# RewriteRule ^(.+)/?$ /$1.php [L]
-
-# # # Rediriger les URL avec extension .php vers l'URL sans extension
-# # RewriteCond %{THE_REQUEST} \s/+(.+)\.php[\s?] [NC]
-# # RewriteRule ^ /%1 [R=301,L,NE]
-
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteCond %{DOCUMENT_ROOT}/$1.php -f
-# RewriteRule ^(.*?)/?$ /$1.php [L]
 
 

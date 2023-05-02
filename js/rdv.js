@@ -14,7 +14,7 @@ function supprimerRdv(button) {
                 }
             }
         };
-        xhr.open('POST', 'rdvsupp', true);
+        xhr.open('POST', 'Rdvsupp', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send('rdv_id=' + rdv_id);
     }

@@ -5,19 +5,16 @@
 session_start();
 
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
 
 // Redirige vers la page d'accueil si l'utilisateur n'est pas admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
     header('Location: Error');
     exit();
 }
-
-// Connexion à la base de données
-$pdo = getPdoConnection();
 
 
 // Récupération de tous les médecins
@@ -85,6 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-// Affichage : inclusion du template
-$template = 'modifdoc';
-include 'templates/base.phtml';
+
+// Définition de la variable $template
+$template = '../templates/modifdoc';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

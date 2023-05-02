@@ -14,12 +14,11 @@ if (!isset($_SESSION['user_id'])) {
   exit;
 }
 
-// Inclusion de la configuration et des fonctions
-require_once 'config.php';
-require 'fonction.php';
+// Inclusion de la config
+require_once '../app/config.php';
 
-// Connexion à la base de données
-$pdo = getPdoConnection();
+// Inclusion des dépendances
+require '../lib/fonction.php';
 
 
 
@@ -83,6 +82,8 @@ if (isset($_POST['medecin_id'])) {
 }
 
 
-// Affichage : inclusion du template
-$template = 'Confirmation';
-include 'templates/base.phtml';
+// Définition de la variable $template
+$template = '../templates/Confirmation';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

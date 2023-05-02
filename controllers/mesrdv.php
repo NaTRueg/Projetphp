@@ -13,14 +13,12 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Inclusion de la configuration et des fonctions
-require_once 'config.php';
-require 'fonction.php';
+// Inclusion de la config
+require_once '../app/config.php';
 
-// Connexion à la base de données
-$pdo = getPdoConnection();
+// Inclusion des dépendances
+require '../lib/fonction.php';
 
-$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 // Récupération des rendez-vous de l'utilisateur
 $rdvs = getRendezVousUtilisateur($pdo, $utilisateur_id);
@@ -49,6 +47,8 @@ $formatter->setPattern('EEEE'); // définir le format pour afficher le jour de l
 
 
 
-// Affichage : inclusion du template
-$template = 'mesrdv';
-include 'templates/base.phtml';
+// Définition de la variable $template
+$template = '../templates/mesrdv';
+
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';

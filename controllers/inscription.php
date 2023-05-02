@@ -5,10 +5,11 @@ session_start();
 
 
 // Inclusion de la config
-require_once 'config.php';
+require_once '../app/config.php';
+
 
 // Inclusion des dépendances
-require 'fonction.php';
+require '../lib/fonction.php';
 
 // Vérifie si l'utilisateur est déjà connecté
 if (isset($_SESSION['user_id'])) {
@@ -24,7 +25,8 @@ $email = '';
 $motDePasse = '';
 $errors = [];
 $success = null;
-$pdo = getPdoConnection();
+
+
 
 // Vérifiez si le formulaire a été soumis
 if (!empty($_POST)) {
@@ -115,7 +117,8 @@ if (!empty($_POST)) {
 
 
 
+// Définition de la variable $template
+$template = '../templates/inscription';
 
-// Affichage : inclusion du template
-$template = 'inscription';
-include 'templates/base.phtml';
+// Inclusion du fichier base.phtml
+include '../public/base.phtml';
