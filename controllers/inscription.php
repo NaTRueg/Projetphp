@@ -8,8 +8,8 @@ session_start();
 require_once '../app/config.php';
 
 
-// Inclusion des dépendances
-require '../lib/fonction.php';
+// // Inclusion des dépendances
+// require '../lib/fonction.php';
 
 // Vérifie si l'utilisateur est déjà connecté
 if (isset($_SESSION['user_id'])) {
@@ -32,12 +32,12 @@ $success = null;
 if (!empty($_POST)) {
 
     // Récupérez les valeurs des champs du formulaire et supprimez les espaces inutiles
-    $nom = trim(htmlspecialchars($_POST['nom']));
-    $prenom = trim(htmlspecialchars($_POST['prenom']));
-    $dateNaissance = trim(htmlspecialchars($_POST['date_naissance']));
+    $nom = strip_tags(trim(htmlspecialchars($_POST['nom'])));
+    $prenom = strip_tags(trim(htmlspecialchars($_POST['prenom'])));
+    $dateNaissance = strip_tags(trim(htmlspecialchars($_POST['date_naissance'])));
     $date_naissance_mysql = date('Y-m-d', strtotime($dateNaissance));
-    $email = trim(htmlspecialchars($_POST['email']));
-    $motDePasse = trim(htmlspecialchars($_POST['mot_de_passe']));
+    $email = strip_tags(trim(htmlspecialchars($_POST['email'])));
+    $motDePasse = strip_tags(trim(htmlspecialchars($_POST['mot_de_passe'])));
 
 
     // Vérifiez si les champs nom et prénom contiennent uniquement des lettres et des espaces

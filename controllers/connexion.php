@@ -14,8 +14,8 @@ if (isset($_SESSION['user_id'])) {
 // Inclusion de la config
 require_once '../app/config.php';
 
-// Inclusion des dépendances
-require '../lib/fonction.php';
+// // Inclusion des dépendances
+// require '../lib/fonction.php';
 
 
 
@@ -28,8 +28,8 @@ $errors = [];
 if (!empty($_POST)) {
 
     // Récupérez les valeurs des champs du formulaire
-    $email = htmlspecialchars(trim($_POST['email']));
-    $motDePasse = htmlspecialchars($_POST['mot_de_passe']);
+    $email = strip_tags(trim(htmlspecialchars($_POST['email'])));
+    $motDePasse = strip_tags(trim(htmlspecialchars($_POST['mot_de_passe'])));
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "L'adresse email n'est pas valide.";
     }

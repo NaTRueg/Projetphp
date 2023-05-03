@@ -5,7 +5,6 @@ require_once '../app/config.php';
 
 
 
-
 function checkEmailExistence($pdo, $email)
 
 {
@@ -39,8 +38,6 @@ function addUtilisateur(string $nom, string $prenom, string $dateNaissance, stri
     // Retourne l'ID de l'utilisateur nouvellement inscrit
     return $utilisateur_id;
 }
-
-
 
 
 

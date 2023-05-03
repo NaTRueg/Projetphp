@@ -7,14 +7,18 @@ session_start();
 // Inclusion de la config
 require_once '../app/config.php';
 
-// Inclusion des dépendances
-require '../lib/fonction.php';
+
 
 // Redirige vers la page d'accueil si la session n'est pas active
 if (!isset($_SESSION['user_id'])) {
     header('Location: Accueil');
     exit;
 }
+
+$email = isset($_SESSION['user_id']) ? $user->getUserEmail($_SESSION['user_id']) : null;
+$nom = isset($_SESSION['user_id']) ? $user->getUserName($_SESSION['user_id']) : null;
+$prenom = isset($_SESSION['user_id']) ? $user->getUserFirstname($_SESSION['user_id']) : null;
+$age = isset($_SESSION['user_id']) ? $user->getUserAge($_SESSION['user_id']) : null;
 
 
 if (isset($_POST['delete_account']) && $_POST['delete_account'] == 1) {

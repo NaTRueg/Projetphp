@@ -14,7 +14,7 @@
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Email</th>
-                        <th>Âge</th>
+                        <th>Date de naissance</th>
                         <th>Rôle</th>
                         <th>Actions</th>
                     </tr>
@@ -26,7 +26,7 @@
                             <td><?= $user['nom'] ?></td>
                             <td><?= $user['prenom'] ?></td>
                             <td><?= $user['email'] ?></td>
-                            <td><?php echo $age; ?></td>
+                            <td><?= date_format(date_create($user['date_naissance']), 'd/m/Y') ?></td>
                             <td><?= $user['role'] ?></td>
                             <td><a href="deleteUser?user_id=<?= $user['id'] ?>">Supprimer</a></td>
                         </tr>

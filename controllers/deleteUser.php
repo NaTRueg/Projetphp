@@ -5,8 +5,8 @@ session_start();
 // Inclusion de la config
 require_once '../app/config.php';
 
-// Inclusion des dépendances
-require '../lib/fonction.php';
+// // Inclusion des dépendances
+// require '../lib/fonction.php';
 
 // Redirige vers la page d'erreur si l'utilisateur n'est pas admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {

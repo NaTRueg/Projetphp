@@ -7,8 +7,8 @@ session_start();
 // Inclusion de la config
 require_once '../app/config.php';
 
-// Inclusion des dépendances
-require '../lib/fonction.php';
+// // Inclusion des dépendances
+// require '../lib/fonction.php';
 
 // Redirige vers la page d'accueil si l'utilisateur n'est pas admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
@@ -45,8 +45,8 @@ $medecin = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $doctor_id = $_POST['id'];
-    $nom = trim(htmlspecialchars($_POST['nom']));;
-    $email = trim(htmlspecialchars($_POST['email']));
+    $nom = strip_tags(trim(htmlspecialchars($_POST['nom'])));;
+    $email = strip_tags(trim(htmlspecialchars($_POST['email'])));
     $ville_id = $_POST['ville']; // Ajout de cette variable
     $specialite_id = $_POST['specialite']; // Ajout de cette variable
     
