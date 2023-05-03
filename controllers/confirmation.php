@@ -17,10 +17,6 @@ if (!isset($_SESSION['user_id'])) {
 // Inclusion de la config
 require_once '../app/config.php';
 
-// // Inclusion des dépendances
-// require '../lib/fonction.php';
-
-
 
 // Redirection vers le formulaire de rendez-vous si la date et l'heure n'ont pas été sélectionnées
 if (!isset($_SESSION['date']) || !isset($_SESSION['heure'])) {

@@ -5,6 +5,9 @@ const DB_NAME = "your-db-name";
 const DB_USER = "user";
 const DB_PASS = "password";
 
+// Inclusion des fonctions
+require '../lib/Functions.php';
+
 // Inclusion de la classe Database
 require_once '../lib/Database.php';
 
@@ -18,8 +21,3 @@ $database = new Database();
 $pdo = $database->getPDOConnection();
 
 $user = new User($pdo);
-
-$email = isset($_SESSION['user_id']) ? $user->getUserEmail($_SESSION['user_id']) : null;
-$nom = isset($_SESSION['user_id']) ? $user->getUserName($_SESSION['user_id']) : null;
-$prenom = isset($_SESSION['user_id']) ? $user->getUserFirstname($_SESSION['user_id']) : null;
-$age = isset($_SESSION['user_id']) ? $user->getUserAge($_SESSION['user_id']) : null;

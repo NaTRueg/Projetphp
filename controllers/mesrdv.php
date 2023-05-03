@@ -16,8 +16,6 @@ if (!isset($_SESSION['user_id'])) {
 // Inclusion de la config
 require_once '../app/config.php';
 
-// // Inclusion des dépendances
-// require '../lib/fonction.php';
 
 
 // Récupération des rendez-vous de l'utilisateur

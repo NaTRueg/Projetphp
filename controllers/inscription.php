@@ -7,10 +7,6 @@ session_start();
 // Inclusion de la config
 require_once '../app/config.php';
 
-
-// // Inclusion des dépendances
-// require '../lib/fonction.php';
-
 // Vérifie si l'utilisateur est déjà connecté
 if (isset($_SESSION['user_id'])) {
     header("Location: Accueil");

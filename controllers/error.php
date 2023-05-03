@@ -7,12 +7,6 @@ session_start();
 // Inclusion de la config
 require_once '../app/config.php';
 
-// // Inclusion des dépendances
-// require '../lib/fonction.php';
-
-
-
-
 
 // Définition de la variable $template
 $template = '../templates/error';
