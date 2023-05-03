@@ -5,26 +5,6 @@ require_once '../app/config.php';
 
 
 
-// function getPDOConnection()
-// {
-
-//     // Construction du Data Source Name
-//     $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8';
-
-//     // Tableau d'options pour la connexion PDO
-//     $options = [
-//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-//         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-//     ];
-
-//     // Création de la connexion PDO (création d'un objet PDO)
-//     $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
-//     $pdo->exec('SET NAMES UTF8');
-
-//     return $pdo;
-// }
-
-// $pdo = getPdoConnection();
 
 function checkEmailExistence($pdo, $email)
 
@@ -95,46 +75,6 @@ function check_login(string $email, string $motDePasse): bool
     }
 }
 
-function getUserEmail($pdo, $userId)
-{
-    $stmt = $pdo->prepare("SELECT email FROM utilisateur WHERE id = ?");
-    $stmt->execute([$userId]);
-    $user = $stmt->fetch();
-    return $user['email'];
-}
-
-function getUserName($pdo, $userId)
-{
-    $stmt = $pdo->prepare("SELECT nom FROM utilisateur WHERE id = ?");
-    $stmt->execute([$userId]);
-    $user = $stmt->fetch();
-    return $user['nom'];
-}
-
-function getUserFirstname($pdo, $userId)
-{
-    $stmt = $pdo->prepare("SELECT prenom FROM utilisateur WHERE id = ?");
-    $stmt->execute([$userId]);
-    $user = $stmt->fetch();
-    return $user['prenom'];
-}
-
-function getUserAge($pdo, $userId)
-{
-    $query = "SELECT date_naissance FROM utilisateur WHERE id = ?";
-    $statement = $pdo->prepare($query);
-    $statement->bindParam(1, $userId, PDO::PARAM_INT);
-    $statement->execute();
-    $result = $statement->fetch(PDO::FETCH_ASSOC);
-    $dob = $result['date_naissance'];
-
-    // Calculer l'âge à partir de la date de naissance
-    $today = new DateTime();
-    $birthdate = new DateTime($dob);
-    $age = $today->diff($birthdate)->y;
-
-    return $age;
-}
 
 function deleteUserAndAppointments($pdo, $user_id)
 {
@@ -216,6 +156,17 @@ function deleteRdv($pdo, $id)
 }
 
 
+function compareDates($a, $b)
+{
+    $dateA = strtotime($a['date'] . ' ' . $a['heure']);
+    $dateB = strtotime($b['date'] . ' ' . $b['heure']);
+    if ($dateA == $dateB) {
+        return 0;
+    }
+    return ($dateA < $dateB) ? -1 : 1;
+}
+
+
 function getMedecins($pdo)
 {
     $sql = "SELECT medecins.id, medecins.nom, medecins.email, specialites.nom AS specialite, villes.nom AS ville 
@@ -238,3 +189,4 @@ function getMedecins($pdo)
     }
     return $medecins;
 }
+

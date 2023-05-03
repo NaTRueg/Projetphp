@@ -1,26 +1,27 @@
 <section class="Account">
   <div class="COMPTE">
     <h1>Mon compte</h1>
+    
     <div class="compteinfo">
-      <p class="Preinfo">Nom : </p>
-      <p> <?php echo getUserName($pdo, $_SESSION['user_id']); ?></p>
-    </div>
-    <div class="compteinfo">
-      <p class="Preinfo">Prénom : </p>
-      <p> <?php echo getUserFirstname($pdo, $_SESSION['user_id']); ?></p>
-    </div>
-    <div class="compteinfo">
-      <p class="Preinfo">E-mail :</p>
-      <p> <?php echo getUserEmail($pdo, $_SESSION['user_id']); ?></p>
-    </div>
-    <div class="compteinfo">
-      <p class="Preinfo">Votre âge : </p>
-      <p> <?php echo getUserAge($pdo, $_SESSION['user_id']); ?> ans</p>
-    </div>
+  <p class="Preinfo">Nom : </p>
+  <p> <?php echo $nom; ?></p>
+</div>
+<div class="compteinfo">
+  <p class="Preinfo">Prénom : </p>
+  <p> <?php echo $prenom; ?></p>
+</div>
+<div class="compteinfo">
+  <p class="Preinfo">E-mail :</p>
+  <p> <?php echo $email; ?></p>
+</div>
+<div class="compteinfo">
+  <p class="Preinfo">Votre âge : </p>
+  <p> <?php echo $age; ?> ans</p>
+</div>
 
-    <form method="post" action="Moncompte" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">
-      <input type="hidden" name="delete_account" value="1">
-      <button type="submit" class="supprimer-compte">Supprimer mon compte <i class="fa-solid fa-trash-can"></i></button>
-    </form>
-  </div>
+      <form method="post" action="Moncompte" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">
+        <input type="hidden" name="delete_account" value="1">
+        <button type="submit" class="supprimer-compte">Supprimer mon compte <i class="fa-solid fa-trash-can"></i></button>
+      </form>
+    </div>
 </section>
