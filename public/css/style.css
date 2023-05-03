@@ -16,10 +16,10 @@ body {
 
 
 header {
-    background: url(./Header.png) center center no-repeat content-box;
-    background-size: cover;
-    background-position: center center;
-    overflow: hidden;
+	background: url(./Header.png) center center no-repeat content-box;
+	background-size: cover;
+	background-position: center center;
+	overflow: hidden;
 }
 
 
@@ -91,7 +91,7 @@ header {
 
 .navbar-icons i:hover {
 
-	color: #F92D45 !important;;
+	color: #F92D45 !important;
 	font-size: 2.7em;
 	transition-duration: 1s;
 	text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -226,6 +226,7 @@ header {
 		margin-right: 0px;
 		margin-left: -10px;
 		margin-block-start: 0px;
+
 	}
 
 	.navbar {
@@ -252,6 +253,31 @@ header {
 	}
 
 
+}
+
+@media (max-width: 420px) {
+
+
+	h1 {
+		color: #E7E7E7;
+		text-shadow: 4px 2px 5px rgb(0, 0, 0) !important;
+	}
+
+	.navbar-icons i {
+		color: #181717 !important;
+		transition-duration: 1s;
+	}
+
+	header {
+		background: url(./Header.png) center center no-repeat content-box;
+		background-size: cover;
+		background-position: left;
+		overflow: hidden;
+	}
+
+	.map-container h1 {
+		text-shadow: none !important;
+	}
 }
 
 .main-section {
@@ -1022,6 +1048,7 @@ input.btn {
 
 	margin-top: 50px;
 	text-align: center;
+	color: black;
 
 }
 
@@ -1189,14 +1216,14 @@ footer h4 {
 
 }
 
-.COMPTE  {
+.COMPTE {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	border: solid 5px rgb(255, 255, 255);
 	padding: 50px;
-	background: rgb(9,97,87);
-	background: linear-gradient(103deg, rgba(9,97,87,1) 35%, rgba(20,36,87,1) 100%);
+	background: rgb(9, 97, 87);
+	background: linear-gradient(120deg, rgba(9, 97, 87, 1) 40%, #3B9795 100%);
 	box-shadow: 30px 20px 6px rgba(0, 0, 0, 0.1);
 	text-shadow: 2px 2px 2px #000000;
 	margin-top: 50px;
@@ -1210,16 +1237,16 @@ footer h4 {
 
 .COMPTE h1 {
 	text-align: center;
-	color : white;
+	color: white;
 }
 
 .COMPTE p {
 	color: white;
 }
 
-.compteinfo { 
+.compteinfo {
 	display: flex;
-	flex-direction:row ;
+	flex-direction: row;
 	justify-content: space-between;
 }
 
@@ -1283,7 +1310,7 @@ footer h4 {
 }
 
 .Rdv {
-	
+
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffffe3;
@@ -1315,31 +1342,31 @@ footer h4 {
 }
 
 .Rdv-footer {
-    display: flex;
+	display: flex;
 	justify-content: center;
-    align-items: center;
-  
+	align-items: center;
+
 }
 
 .DocIcon {
 	align-self: center;
-    padding: 20px;
-    border: 2px solid;
-    border-radius: 50%;
-    background-color: #142457;
-    COLOR: white;
+	padding: 20px;
+	border: 2px solid;
+	border-radius: 50%;
+	background-color: #142457;
+	COLOR: white;
 }
 
 
 
 .Rdv-content {
 	display: flex;
-    flex-direction: row;
+	flex-direction: row;
 	place-content: space-evenly;
-    border: 2px #00000036 solid;
-    margin-bottom: 20px;
-    border-radius: 10PX;
-    padding: 30px;
+	border: 2px #00000036 solid;
+	margin-bottom: 20px;
+	border-radius: 10PX;
+	padding: 30px;
 }
 
 .Rdv-header i {
@@ -1371,12 +1398,12 @@ footer h4 {
 }
 
 .Rdv-content p {
-    font-weight: bold;
-   
+	font-weight: bold;
+
 }
 
 .spe {
-	color : #747070;
+	color: #747070;
 }
 
 .supprimer-rdv {
@@ -1532,5 +1559,3 @@ footer h4 {
 .Docteurs tbody tr td {
 	border: 2px black solid !important;
 }
-
-
