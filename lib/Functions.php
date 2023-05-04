@@ -21,7 +21,6 @@ function checkEmailExistence($pdo, $email)
 function addUtilisateur(string $nom, string $prenom, string $dateNaissance, string $email, string $motDePasse)
 {
     $db = new Database();
-    $pdo = $db->getPDOConnection();
 
     // Hachage du mot de passe
     $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
@@ -29,28 +28,18 @@ function addUtilisateur(string $nom, string $prenom, string $dateNaissance, stri
     // Insertion des informations de l'utilisateur dans la table utilisateur
     $sql = 'INSERT INTO utilisateur (nom, prenom, date_naissance, email, mot_de_passe) VALUES (?, ?, ?, ?, ?)';
 
-    $query = $pdo->prepare($sql);
-    $query->execute([$nom, $prenom, $dateNaissance, $email, $hash]);
+    return $db->insert($sql, [$nom, $prenom, $dateNaissance, $email, $hash]);
 
-    // Récupération de l'ID de l'utilisateur nouvellement inscrit
-    $utilisateur_id = $pdo->lastInsertId();
-
-    // Retourne l'ID de l'utilisateur nouvellement inscrit
-    return $utilisateur_id;
+    
 }
 
 
-
 function check_login(string $email, string $motDePasse) {
-
     $db = new Database();
-    $pdo = $db->getPDOConnection();
 
     // Récupération de l'utilisateur depuis la base de données
     $sql = "SELECT id, prenom, nom, isAdmin, mot_de_passe FROM utilisateur WHERE email = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    $user = $db->getOneResult($sql, [$email]);
 
     if (!$user) {
         // L'utilisateur n'existe pas dans la base de données
@@ -66,6 +55,7 @@ function check_login(string $email, string $motDePasse) {
         return false;
     }
 }
+
 
 
 

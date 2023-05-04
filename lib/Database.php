@@ -24,4 +24,25 @@ class Database
 
         return $this->pdo;
     }
+
+    public function insert(string $sql, array $params = []): int
+    {
+        $pdo = $this->getPDOConnection();
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+
+        return $pdo->lastInsertId();
+    }
+
+    public function getOneResult(string $sql, array $params = []): array|false
+{
+    $pdo = $this->getPDOConnection();
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetch() ?: false;
+}
+
 }
