@@ -4,8 +4,8 @@
 session_start();
 
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 // Vérifie si l'utilisateur est déjà connecté
 if (isset($_SESSION['user_id'])) {
@@ -117,4 +117,4 @@ if (!empty($_POST)) {
 $template = '../templates/inscription';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

@@ -1273,6 +1273,7 @@ footer h4 {
 
 }
 
+
 .COMPTE button:hover {
 	background-color: #890f0f;
 }
@@ -1558,4 +1559,28 @@ footer h4 {
 
 .Docteurs tbody tr td {
 	border: 2px black solid !important;
+}
+
+.fa-trash-alt:before, .fa-trash-can:before {
+    content: "\f2ed";
+    color: red;
+	margin-left: 150%;
+
+}
+
+.fa-pencil-alt:before, .fa-pencil:before {
+    content: "\f013";
+	margin-left: 150%;
+
+}
+
+.RechercherDoc{
+	text-align: center;
+}
+
+.Cherchermedecin {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	
 }

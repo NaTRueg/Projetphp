@@ -36,4 +36,4 @@ exit;
 $template = '../templates/logout';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

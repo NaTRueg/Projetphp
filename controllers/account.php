@@ -4,8 +4,8 @@
 // Démarrage de la session
 session_start();
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 
@@ -67,4 +67,4 @@ if (isset($_POST['delete_account']) && $_POST['delete_account'] == 1) {
 $template = '../templates/account';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

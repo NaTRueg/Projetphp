@@ -11,8 +11,8 @@ if (isset($_SESSION['user_id'])) {
 
 
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 // Initialisation des variables
@@ -20,29 +20,23 @@ $email = '';
 $motDePasse = '';
 $errors = [];
 
-// Vérifiez si le formulaire a été soumis
 if (!empty($_POST)) {
 
     // Récupérez les valeurs des champs du formulaire
     $email = strip_tags(trim(htmlspecialchars($_POST['email'])));
     $motDePasse = strip_tags(trim(htmlspecialchars($_POST['mot_de_passe'])));
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "L'adresse email n'est pas valide.";
     }
 
-    if (!check_login($email, $motDePasse)) {
+    // Vérifiez si l'utilisateur existe et que le mot de passe est correct
+    $user = check_login($email, $motDePasse);
+    if (!$user) {
         $errors['mot_de_passe'] = "L'adresse email ou le mot de passe est incorrect.";
     }
 
-    // Vérifiez si l'utilisateur existe et que le mot de passe est correct
-    if (check_login($email, $motDePasse)) {
-
-        // Récupération de l'utilisateur depuis la base de données
-        
-        $sql = "SELECT id, prenom, nom, isAdmin  FROM utilisateur WHERE email = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
+    if ($user) {
 
         // Stockage de l'ID utilisateur dans la variable de session
         $_SESSION['user_id'] = $user['id'];
@@ -61,9 +55,8 @@ if (!empty($_POST)) {
     }
 }
 
-
 // Définition de la variable $template
 $template = '../templates/connexion';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

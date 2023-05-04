@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 if (isset($_POST['rdv_id'])) {

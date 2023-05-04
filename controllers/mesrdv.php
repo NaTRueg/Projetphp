@@ -13,8 +13,8 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 
@@ -39,4 +39,4 @@ $formatter->setPattern('EEEE'); // définir le format pour afficher le jour de l
 $template = '../templates/mesrdv';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

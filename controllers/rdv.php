@@ -12,8 +12,8 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 // Récupération des villes
@@ -88,4 +88,4 @@ if (isset($_POST['submit'])) {
 $template = '../templates/rdv';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

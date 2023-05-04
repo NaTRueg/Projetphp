@@ -14,8 +14,8 @@ if (!isset($_SESSION['user_id'])) {
   exit;
 }
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 // Redirection vers le formulaire de rendez-vous si la date et l'heure n'ont pas été sélectionnées
@@ -82,4 +82,4 @@ if (isset($_POST['medecin_id'])) {
 $template = '../templates/Confirmation';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

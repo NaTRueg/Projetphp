@@ -41,36 +41,32 @@ function addUtilisateur(string $nom, string $prenom, string $dateNaissance, stri
 
 
 
-function check_login(string $email, string $motDePasse): bool
-{
+function check_login(string $email, string $motDePasse) {
 
     $db = new Database();
     $pdo = $db->getPDOConnection();
 
-    // Récupération du mot de passe haché de l'utilisateur dans la base de données
-    $sql = 'SELECT mot_de_passe FROM utilisateur WHERE email = ?';
+    // Récupération de l'utilisateur depuis la base de données
+    $sql = "SELECT id, prenom, nom, isAdmin, mot_de_passe FROM utilisateur WHERE email = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
 
-    $query = $pdo->prepare($sql);
-    $query->execute([$email]);
-
-    $result = $query->fetch();
-
-    if (!$result) {
+    if (!$user) {
         // L'utilisateur n'existe pas dans la base de données
         return false;
     }
 
-    $hash = $result['mot_de_passe'];
-
     // Vérification du mot de passe haché
-    if (password_verify($motDePasse, $hash)) {
+    if (password_verify($motDePasse, $user['mot_de_passe'])) {
         // Le mot de passe est correct
-        return true;
+        return $user;
     } else {
         // Le mot de passe est incorrect
         return false;
     }
 }
+
 
 
 function deleteUserAndAppointments($pdo, $user_id)
@@ -187,3 +183,10 @@ function getMedecins($pdo)
     return $medecins;
 }
 
+function format_rdv_date($date) {
+    $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+    $formatted_date = ucfirst($formatter->format(strtotime($date)));
+    $formatted_date .= ' ' . date('d/m/Y', strtotime($date));
+    return $formatted_date;
+  }
+  

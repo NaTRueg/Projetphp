@@ -4,8 +4,8 @@
 // Démarrage de la session
 session_start();
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 // Redirige vers la page d'accueil si l'utilisateur n'est pas admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = strip_tags(trim(htmlspecialchars($_POST['email'])));
     $ville_id = $_POST['ville']; // Ajout de cette variable
     $specialite_id = $_POST['specialite']; // Ajout de cette variable
-    
-      // Valider les données du formulaire
-      if (empty($nom)) {
+
+    // Valider les données du formulaire
+    if (empty($nom)) {
         $errors['nom'] = "Le nom est obligatoire";
     }
 
@@ -84,4 +84,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $template = '../templates/modifdoc';
 
 // Inclusion du fichier base.phtml
-include '../public/base.phtml';
+include '../templates/base.phtml';

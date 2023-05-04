@@ -2,8 +2,8 @@
 // Démarrage de la session
 session_start();
 
-// Inclusion de la config
-require_once '../app/config.php';
+// Inclusion de init
+require_once '../app/init.php';
 
 
 // Redirige vers la page d'accueil si l'utilisateur n'est pas admin

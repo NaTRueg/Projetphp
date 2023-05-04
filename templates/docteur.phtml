@@ -40,6 +40,30 @@
   </form>
 </section>
 
+<h1 class="RechercherDoc">Rechercher un médecin</h1>
+<section class="Cherchermedecin">
+
+  <form method="post" action="GérerDocteurs">
+    <label for="specialite">Spécialité :</label>
+    <select id="specialite_id" name="specialite">
+      <option value="">Sélectionnez une spécialité</option>
+      <?php foreach ($specialites as $specialite) : ?>
+        <option value="<?= $specialite['id'] ?>"><?= $specialite['nom'] ?></option>
+      <?php endforeach; ?>
+    </select>
+
+    <label for="ville">Ville :</label>
+    <select id="ville_id" name="ville">
+      <option value="">Sélectionnez une ville</option>
+      <?php foreach ($villes as $ville) : ?>
+        <option value="<?= $ville['id'] ?>"><?= $ville['nom'] ?></option>
+      <?php endforeach; ?>
+    </select>
+
+    <input type="submit" class="btn" value="Rechercher">
+  </form>
+</section>
+
 
 <section class="Gereruser">
   <h1>Liste des médecins</h1>
@@ -55,7 +79,8 @@
             <th>Email</th>
             <th>Spécialité</th>
             <th>Ville</th>
-            <th>Actions</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
@@ -66,7 +91,9 @@
               <td><?= $medecin['email'] ?></td>
               <td><?= $medecin['specialite'] ?></td>
               <td><?= $medecin['ville'] ?></td>
-              <td><a href="deleteDoc?doctor_id=<?= $medecin['id'] ?>">Supprimer</a>||||<a href="updateDoctor?id=<?= $medecin['id'] ?>">Modifier</a></td>
+              <td><a href="updateDoctor?id=<?= $medecin['id'] ?>"><i class="fas fa-pencil-alt"></i></a></td>
+              <td><a href="deleteDoc?doctor_id=<?= $medecin['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
+
             </tr>
           <?php endforeach; ?>
         </tbody>
