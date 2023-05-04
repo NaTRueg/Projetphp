@@ -10,8 +10,7 @@
   </Files>
 </FilesMatch>
 
-# Redirige vers la page d'erreur 404
-ErrorDocument 404 /error.php
+
 
 RewriteEngine On
 RewriteCond %{HTTPS} off
@@ -52,6 +51,21 @@ RewriteRule ^([^\.]+)$ $1.php [NC,L]
 RewriteCond %{THE_REQUEST} \s/+(.+)\.php[\s?] [NC]
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^ - [R=404,L]
+
+# Redirige vers la page d'erreur 404
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /Error [L,QSA]
+
+ErrorDocument 400 /Error
+ErrorDocument 403 /Error
+ErrorDocument 404 /Error
+ErrorDocument 410 /Error
+ErrorDocument 500 /Error
+ErrorDocument 503 /Error
+
+
 
 
 

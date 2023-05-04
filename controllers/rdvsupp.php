@@ -4,7 +4,7 @@ session_start();
 
 // Redirige vers la page d'accueil si la session n'est pas active
 if (!isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: Accueil');
     exit;
 }
 
