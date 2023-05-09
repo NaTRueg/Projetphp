@@ -6,8 +6,11 @@ session_start();
 require_once '../app/init.php';
 
 
-// Redirige vers la page d'erreur si l'utilisateur n'est pas admin
-if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
+// Vérifie si l'utilisateur est connecté en tant qu'administrateur ou super administrateur
+if (isset($_SESSION['isAdmin']) && ($_SESSION['isAdmin'] == 1 || $_SESSION['isAdmin'] == 2)) {
+    // Autoriser l'accès aux pages pour les administrateurs normaux et les super administrateurs
+} else {
+    // Rediriger l'utilisateur vers la page d'erreur
     header('Location: Error');
     exit();
 }

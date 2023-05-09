@@ -35,7 +35,7 @@
           if (isset($_SESSION['user_id'])) {
             // Si l'utilisateur est connecté
 
-            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+            if (isset($_SESSION['isAdmin']) && ($_SESSION['isAdmin'] == 1 || $_SESSION['isAdmin'] == 2)) {
               // Si l'utilisateur est un admin, on affiche les boutons "Gérer docteurs" et "Utilisateur"
               echo '
                   <li><a href="GérerDocteurs">Gérer docteurs</a></li>

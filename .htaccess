@@ -36,6 +36,7 @@ RewriteRule ^addDoc$ controllers/addDoc.php [L]
 RewriteRule ^updateDoctor$ controllers/updateDoctor.php [L]
 RewriteRule ^deleteDoc$ controllers/deleteDoc.php [L]
 RewriteRule ^deleteUser$ controllers/deleteUser.php [L]
+RewriteRule ^updateUser$ controllers/updateUser.php [L]
 
 
 # Interdire l'ajout de l'extension .php dans les URL

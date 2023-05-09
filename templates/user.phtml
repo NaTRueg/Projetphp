@@ -16,7 +16,9 @@
                         <th>Email</th>
                         <th>Date de naissance</th>
                         <th>Rôle</th>
-                        <th>Actions</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -27,8 +29,25 @@
                             <td><?= $user['prenom'] ?></td>
                             <td><?= $user['email'] ?></td>
                             <td><?= date_format(date_create($user['date_naissance']), 'd/m/Y') ?></td>
-                            <td><?= $user['role'] ?></td>
-                            <td><a href="deleteUser?user_id=<?= $user['id'] ?>">Supprimer</a></td>
+                            <td><?= $user['isAdmin'] ?></td>
+                            <td>
+
+                                <?php if ($_SESSION['isAdmin'] == 2) : ?>
+
+                                    <form method="post" action="updateUser">
+                                        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+
+                                        <select name="role" id="role">
+                                            <option value="0" <?= ($user['isAdmin'] == 0) ? 'selected' : '' ?>>Utilisateur normal</option>
+                                            <option value="1" <?= ($user['isAdmin'] == 1) ? 'selected' : '' ?>>Admin</option>
+                                            <option value="2" <?= ($user['isAdmin'] == 2) ? 'selected' : '' ?>>Super admin</option>
+                                        </select>
+                                        <input type="submit" name="submit" value="Enregistrer">
+                                    </form>
+                                <?php endif; ?>
+
+                            </td>
+                            <td><a href="deleteUser?user_id=<?= $user['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
