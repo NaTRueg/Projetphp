@@ -19,6 +19,7 @@ $prenom = '';
 $dateNaissance = '';
 $email = '';
 $motDePasse = '';
+$passwordErrors = array();
 $errors = [];
 $success = null;
 
@@ -72,15 +73,14 @@ if (!empty($_POST)) {
         $errors['nom'] = "Merci d'indiquer un nom";
     }
 
-
     if (!$motDePasse) {
         $errors['mot_de_passe'] = "Merci d'indiquer un mot de passe";
     }
-
-    if (strlen($motDePasse) < 8) {
-        $errors['mot_de_passe'] = "Le mot de passe doit avoir au moins 8 caractères.";
+    
+    if (strlen($motDePasse) < 12 || !preg_match("#[a-z]+#", $motDePasse) || !preg_match("#[A-Z]+#", $motDePasse) || !preg_match("#[0-9]+#", $motDePasse) || !preg_match("#\W+#", $motDePasse)) {
+        $errors['mot_de_passe'] = "Le mot de passe doit contenir au moins 12 caractères, une minuscule, une majuscule, un chiffre et un caractère spécial";
     }
-
+    
     if (!$dateNaissance) {
         $errors['date_naissance'] = "Merci d'indiquer une date de naissance";
     }
@@ -96,7 +96,7 @@ if (!empty($_POST)) {
 
 
     // Si tout est OK (pas d'erreur)
-    if (empty($errors)) {
+    if (empty($errors) && empty($passwordErrors)) {
 
         // Ajout de l'email dans le fichier csv
         $utilisateur_id = addUtilisateur($nom, $prenom, $date_naissance_mysql, $email, $motDePasse);
