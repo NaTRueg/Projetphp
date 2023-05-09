@@ -175,8 +175,8 @@ function getMedecins($pdo)
 
 function format_rdv_date($date) {
     $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+    $formatter->setPattern('EEEE'); // définir le format pour afficher le jour de la semaine
     $formatted_date = ucfirst($formatter->format(strtotime($date)));
     $formatted_date .= ' ' . date('d/m/Y', strtotime($date));
     return $formatted_date;
-  }
-  
+}
