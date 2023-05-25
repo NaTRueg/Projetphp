@@ -834,7 +834,6 @@ h2 span {
 .title {
 	display: inline-block;
 	margin-left: 10px;
-	/* ou la valeur que vous souhaitez */
 	vertical-align: middle;
 }
 
@@ -842,7 +841,6 @@ h2 span {
 	color: #E7E7E7;
 	display: inline-block;
 	font-size: 1.2em;
-	/* ou la taille que vous souhaitez */
 	vertical-align: middle;
 }
 
@@ -1584,3 +1582,38 @@ footer h4 {
 	text-align: center;
 	
 }
+
+table {
+	width: 100%;
+	overflow-x: auto;
+	white-space: nowrap;
+	border-collapse: collapse;
+  }
+  
+  th, td {
+	padding: 0.5rem;
+	min-width: 80px;
+  }
+  
+
+@media only screen and (max-width: 1250px) {
+	table {
+	  display: block;
+	  width: 100%;
+	}
+	tbody,
+	tr,
+	td {
+	  display: block;
+	  width: 100%;
+	}
+	th {
+	  display: none;
+	}
+	td:before {
+	  content: attr(data-label);
+	  float: left;
+	  font-weight: bold;
+	  text-transform: uppercase;
+	}
+  }

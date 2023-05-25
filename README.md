@@ -5,3 +5,7 @@ Pour utiliser le site il faut crée un compte ou se connecter , on peut ensuite 
 Pour se connecter en tant qu'admin : 
 email : test@jean.fr
 mdp : 123456789 
+
+Super-admin : 
+email : Super@admin.fr
+mdp : 123456789 
